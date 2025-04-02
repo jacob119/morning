@@ -2,11 +2,26 @@ import requests
 import json
 import os
 import time
+import logging
 from datetime import datetime
 from config import APP_KEY, APP_SECRET
 
 TOKEN_FILE = "access_token.json"
+TOKEN_EXPIRY_DURATION = 3600  # 1 hour in seconds
+STOCK_CODES = {
+    "삼성전자": "005930",
+    "SK하이닉스": "000660",
+    "신풍제약": "019170"
+}
+REQUEST_INTERVAL = 10  # seconds
+LOG_FILE = "app.log"  # 로그 파일 경로
 
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+    logging.FileHandler(LOG_FILE),
+    logging.StreamHandler()
+])
 def load_cached_token():
     if os.path.exists(TOKEN_FILE):
         with open(TOKEN_FILE, 'r') as f:
@@ -22,8 +37,8 @@ def get_access_token(app_key, app_secret):
     cached_token, cached_time = load_cached_token()
     now = time.time()
 
-    # 유효한 캐시 토큰이 있다면 사용 (1시간 유효)
-    if cached_token and (now - cached_time < 3600):
+    # Use valid cached token if available (1 hour validity)
+    if cached_token and (now - cached_time < TOKEN_EXPIRY_DURATION):
         return cached_token
 
     url = "https://openapi.koreainvestment.com:9443/oauth2/tokenP"
@@ -35,23 +50,24 @@ def get_access_token(app_key, app_secret):
     }
     try:
         res = requests.post(url, headers=headers, data=json.dumps(body))
-        if res.status_code == 200:
-            token = res.json()['access_token']
+        res.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
+
+        token = res.json().get('access_token')
+        if token:
             save_token(token)
             return token
         else:
-            print(f"[경고] 토큰 발급 실패: {res.status_code}, {res.text}")
-            if cached_token:
-                print("[대체] 기존 캐시 토큰 사용")
-                return cached_token
-            else:
-                raise Exception(f"Token Error: {res.status_code}, {res.text}")
+            raise Exception("Token not found in response")
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Token request failed: {e}")
     except Exception as e:
-        print(f"[예외 발생] {e}")
-        if cached_token:
-            print("[대체] 기존 캐시 토큰 사용")
-            return cached_token
-        raise
+        logging.error(f"Exception occurred: {e}")
+
+    if cached_token:
+        logging.warning("Using cached token as fallback")
+        return cached_token
+
+    raise Exception("Failed to obtain access token and no cached token available")
 
 def get_stock_price(access_token, app_key, app_secret, stock_code):
     url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-price"
@@ -66,23 +82,25 @@ def get_stock_price(access_token, app_key, app_secret, stock_code):
         "fid_cond_mrkt_div_code": "J",
         "fid_input_iscd": stock_code
     }
-    res = requests.get(url, headers=headers, params=params)
-    if res.status_code == 200:
-        return res.json()['output']
-    else:
-        raise Exception(f"Price Error: {res.status_code}, {res.text}")
+    try:
+        res = requests.get(url, headers=headers, params=params)
+        res.raise_for_status()
+        return res.json().get('output', {})
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Price request failed: {e}")
+        raise
 
 def format_price_won(value):
     try:
         value = int(value)
         return f"{value / 1000000000:.2f}천억 원"
-    except:
+    except (ValueError, TypeError):
         return "N/A"
 
 def format_number(value):
     try:
         return f"{int(value):,}"
-    except:
+    except (ValueError, TypeError):
         return "N/A"
 
 def format_change(value):
@@ -90,7 +108,7 @@ def format_change(value):
         ivalue = int(value)
         sign = '+' if ivalue > 0 else ('-' if ivalue < 0 else '')
         return sign, f"{abs(ivalue):,}"
-    except:
+    except (ValueError, TypeError):
         return '', "N/A"
 
 def format_percent(value):
@@ -98,14 +116,14 @@ def format_percent(value):
         fvalue = float(value)
         sign = '+' if fvalue > 0 else ('-' if fvalue < 0 else '')
         return sign, f"{abs(fvalue):.2f}"
-    except:
+    except (ValueError, TypeError):
         return '', "N/A"
 
 def color_text(text, sign):
     if sign == '+':
-        return f"\033[91m{text}\033[0m"  # 빨간색
+        return f"\033[91m{text}\033[0m"  # Red
     elif sign == '-':
-        return f"\033[94m{text}\033[0m"  # 파란색
+        return f"\033[94m{text}\033[0m"  # Blue
     else:
         return text
 
@@ -114,11 +132,9 @@ def check_buy_signal(current_price, ma5, ma20):
         current = float(current_price)
         ma_5 = float(ma5)
         ma_20 = float(ma20)
-        if ma_5 > ma_20 and current > ma_5:
-            return True
-    except:
-        pass
-    return False
+        return ma_5 > ma_20 and current > ma_5
+    except (ValueError, TypeError):
+        return False
 
 def print_stock_info(stock_name, stock_code, app_key, app_secret):
     access_token = get_access_token(app_key, app_secret)
@@ -144,10 +160,10 @@ def print_stock_info(stock_name, stock_code, app_key, app_secret):
 
 def run_realtime_monitoring():
     while True:
-        print_stock_info("삼성전자", "005930", APP_KEY, APP_SECRET)
-        print_stock_info("SK하이닉스", "000660", APP_KEY, APP_SECRET)
-        print_stock_info("신풍제약", "019170", APP_KEY, APP_SECRET)
-        time.sleep(10)
+        for stock_name, stock_code in STOCK_CODES.items():
+            print_stock_info(stock_name, stock_code, APP_KEY, APP_SECRET)
+        time.sleep(REQUEST_INTERVAL)
 
 if __name__ == "__main__":
+    logging.info("test")
     run_realtime_monitoring()
