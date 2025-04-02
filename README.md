@@ -21,11 +21,15 @@
 ```bash
 pip install requests
 
-2. config.py 설정
+### 2. config.py 설정
 config.py 파일을 생성하고, 다음과 같이 앱 키와 시크릿을 입력합니다.
 APP_KEY = "YOUR_APP_KEY"
 APP_SECRET = "YOUR_APP_SECRET"
 
 
-3. 실행
+### 3. 실행
 python restapi.py
+
+### 4. 로그 및 캐시
+	•	로그 파일: app.log
+	•	토큰 캐시 파일: access_token.json
