@@ -21,9 +21,9 @@
 pip install requests
 
 ### 2. config.py 설정
-config.py 파일을 생성하고, 다음과 같이 앱 키와 시크릿을 입력합니다.
+config.py 파일을 생성하고, 다음과 같이 앱 키와 시크릿을 입력합니다.z
 APP_KEY = "YOUR_APP_KEY"
-APP_SECRET = "YOUR_APP_SECRET"
+APP_SECRET = "YOUR_APP_SECRET"zz
 
 
 ### 3. 실행
