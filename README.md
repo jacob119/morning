@@ -34,32 +34,33 @@ pip install -r requirements.txt
 
 morning-root/
 ├── agent/
-│   ├── core
+│   ├── core/
 │   │   └── workflows.py # Graph Node Wrapper
-│   ├── prompts
-│   │   ├── assets.py # (TBD) 
+│   ├── prompts/
+│   │   ├── assets.py # (TBD) Optimized Promps/Context
 │   │   ├── description.py # Tool Description
 │   │   └── system.py # System Instructions
-│   ├── anaytics.py
-│   ├── decision.py
-│   ├── evaluation.py
-│   └── tools.py
+│   ├── anaytics.py # Create Report for Super-Agent
+│   ├── decision.py # Super-Agent
+│   ├── evaluation.py # Evaluate action and portfolio
+│   └── tools.py # Tools for agent
 ├── api/
 │   ├── ki/
-│   │   ├── clean.py
-│   │   └── transform.py
-│   ├── api_client.py
-│   ├── portfolio.py
-│   └── trader.py
+│   │   ├── sample/ # KIS Samples 
+│   │   ├── kis_auth.py # KIS Auth
+│   │   └── kis_domstk.py # KIS API Wrapper
+│   ├── api_client.py # API Client for Agent
+│   ├── portfolio.py # (TBD) Manage portfolio
+│   └── trader.py # (TBD) Action for trading
 └── config/
-│   └── setting.txt
+│   └── setting.py # Configurations
 └── log/
 └── utils/
 │   └── logger.py
-└── app.py
+└── app.py # Agentic Trader
 └── README.md
-└── requirements.txt
-└── restapi.py
+└── requirements.txt 
+└── restapi.py # Practice
 
 
 
