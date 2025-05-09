@@ -97,4 +97,4 @@ Desktop.ini
 *.ipynb
 
 # Auth
-config/KIS*
+config/KIS*config/setting.py
