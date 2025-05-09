@@ -13,3 +13,10 @@ def get_stock_reports(stock_code):
 def get_stock_news(stock_code):
     # Dummy Code : Crawling
     return f"{stock_code} 관련 최신 뉴스: '시장 점유율 확대 중' 입니다."
+
+
+# 현재 주식 가격 조회 Tool
+@tool(name='fetch_price')
+def get_stock_price(stock_code):
+    # Dummy Code : Crawling
+    return f"{stock_code} 현재 주가는 : '72,000원' 입니다."

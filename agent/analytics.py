@@ -27,15 +27,16 @@ def decide_next_action(state: StockState) -> StockState:
         다음 중 무엇을 하시겠습니까? 
         1. 뉴스 조회 (fetch_news)
         2. 리포트 조회 (fetch_report)
+        3. 현재 가격 조회 (fetch_price)
         3. 충분하니 종료 (end)
 
-        'fetch_news', 'fetch_report', 'end' 중 하나만 선택해서 답변하세요
+        'fetch_news', 'fetch_report', 'fetch_price', 'end' 중 하나만 선택해서 답변하세요
     """
     print(f"prompt : {prompt}")
     response = llm.invoke(prompt)
     print(f"GPT 결정: {response}")
     decision = response.content.strip().lower()
-    if decision not in ["fetch_news", "fetch_report", "end"]:
+    if decision not in ["fetch_news", "fetch_report", "fetch_price", "end"]:
         decision = "end"
     state.next_action = decision
     state.info_log.append(f"LLM 결정: {decision}")
@@ -55,6 +56,7 @@ def end_node(state: StockState) -> StockState:
 builder = StateGraph(StockState)
 builder.add_node("fetch_news", lambda s : tool_wrapper(TOOLS["fetch_news"], s))
 builder.add_node("fetch_report", lambda s : tool_wrapper(TOOLS["fetch_report"], s))
+builder.add_node("fetch_price", lambda s : tool_wrapper(TOOLS["fetch_price"], s))
 builder.add_node("decide", decide_next_action)
 builder.add_node("end", end_node)
 
@@ -64,11 +66,13 @@ builder.add_conditional_edges(
     {
         "fetch_news" : "fetch_news",
         "fetch_report": "fetch_report",
+        "fetch_price": "fetch_price",
         "end" : "end"
     })
 
 builder.add_edge("fetch_news", "decide")
 builder.add_edge("fetch_report", "decide")
+builder.add_edge("fetch_price", "decide")
 builder.set_entry_point("decide")
 
 graph = builder.compile()
