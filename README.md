@@ -32,35 +32,37 @@ pip install -r requirements.txt
 
 ### 2. Package Structure
 
+```plaintext
 morning-root/
 ├── agent/
 │   ├── core/
-│   │   └── workflows.py # Graph Node Wrapper
+│   │   └── workflows.py          # Graph Node Wrapper
 │   ├── prompts/
-│   │   ├── assets.py # (TBD) Optimized Promps/Context
-│   │   ├── description.py # Tool Description
-│   │   └── system.py # System Instructions
-│   ├── anaytics.py # Create Report for Super-Agent
-│   ├── decision.py # Super-Agent
-│   ├── evaluation.py # Evaluate action and portfolio
-│   └── tools.py # Tools for agent
+│   │   ├── assets.py             # (TBD) Optimized Prompts/Context
+│   │   ├── description.py        # Tool Description
+│   │   └── system.py             # System Instructions
+│   ├── anaytics.py               # Create Report for Super-Agent
+│   ├── decision.py               # Super-Agent
+│   ├── evaluation.py             # Evaluate action and portfolio
+│   └── tools.py                  # Tools for agent
 ├── api/
 │   ├── ki/
-│   │   ├── sample/ # KIS Samples 
-│   │   ├── kis_auth.py # KIS Auth
-│   │   └── kis_domstk.py # KIS API Wrapper
-│   ├── api_client.py # API Client for Agent
-│   ├── portfolio.py # (TBD) Manage portfolio
-│   └── trader.py # (TBD) Action for trading
-└── config/
-│   └── setting.py # Configurations
-└── log/
-└── utils/
+│   │   ├── sample/               # KIS Samples 
+│   │   ├── kis_auth.py           # KIS Auth
+│   │   └── kis_domstk.py         # KIS API Wrapper
+│   ├── api_client.py             # API Client for Agent
+│   ├── portfolio.py              # (TBD) Manage portfolio
+│   └── trader.py                 # (TBD) Action for trading
+├── config/
+│   └── setting.py                # Configurations
+├── log/
+├── utils/
 │   └── logger.py
-└── app.py # Agentic Trader
-└── README.md
-└── requirements.txt 
-└── restapi.py # Practice
+├── app.py                        # Agentic Trader
+├── README.md
+├── requirements.txt 
+└── restapi.py                    # Practice
+
 
 
 
