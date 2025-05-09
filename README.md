@@ -1,6 +1,6 @@
 # 📈 Morning
 
-이 프로젝트는 한국투자증권(KIS; Korea Investment Securities) Open API를 Tool/Agent화하여 ChatGPT 기반 자동 주식 매매 애플리케이션입니다.
+이 프로젝트는 한국투자증권(KIS; Korea Investment Securities) Open API를 Tool/Agent화하여 ChatGPT 기반 자동 주식 매매 애플리케이션.
 ---
 
 ## 📌 주요 기능
