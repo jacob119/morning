@@ -103,6 +103,76 @@ def get_kis_token():
         logger.error(f"Error getting KIS token: {e}")
         return None
 
+def get_stock_name(stock_code):
+    """KIS API를 사용하여 주식 코드로 주식명을 조회합니다."""
+    try:
+        token = get_kis_token()
+        if not token:
+            logger.warning("Failed to get KIS token for stock name lookup")
+            return None
+        
+        # 주식명 검색 API 사용
+        url = f"{API_CONFIG['KIS']['BASE_URL']}/uapi/domestic-stock/v1/quotations/inquire-price"
+        headers = {
+            "Content-Type": "application/json",
+            "authorization": f"Bearer {token}",
+            "appkey": AUTH_CONFIG["APP_KEY"],
+            "appsecret": AUTH_CONFIG["APP_SECRET"],
+            "tr_id": "FHKST01010100"
+        }
+        params = {
+            "FID_COND_MRKT_DIV_CODE": "J",
+            "FID_INPUT_ISCD": stock_code
+        }
+        
+        response = requests.get(url, headers=headers, params=params)
+        if response.status_code == 200:
+            data = response.json()
+            if data.get('rt_cd') == '0':
+                output = data.get('output', {})
+                
+                # 여러 필드에서 주식명 찾기
+                stock_name = (
+                    output.get('hts_kor_isnm', '') or  # 한글 종목명
+                    output.get('bstp_kor_isnm', '') or  # 업종명 (임시)
+                    ''
+                )
+                
+                if stock_name and stock_name != '전기·전자':  # 업종명이 아닌 경우만
+                    logger.info(f"주식명 조회 성공: {stock_code} -> {stock_name}")
+                    return stock_name
+                else:
+                    # 주식명을 찾을 수 없는 경우 더미 데이터 사용
+                    dummy_names = {
+                        '005930': '삼성전자',
+                        '000660': 'SK하이닉스',
+                        '035420': 'NAVER',
+                        '051910': 'LG화학',
+                        '006400': '삼성SDI',
+                        '207940': '삼성바이오로직스',
+                        '068270': '셀트리온',
+                        '323410': '카카오',
+                        '035720': '카카오',
+                        '051900': 'LG생활건강'
+                    }
+                    
+                    if stock_code in dummy_names:
+                        logger.info(f"더미 주식명 사용: {stock_code} -> {dummy_names[stock_code]}")
+                        return dummy_names[stock_code]
+                    else:
+                        logger.warning(f"주식명을 찾을 수 없음: {stock_code}")
+                        return None
+            else:
+                logger.error(f"KIS API error for stock name: {data.get('msg1')}")
+                return None
+        else:
+            logger.error(f"KIS API request failed for stock name: {response.status_code}")
+            return None
+            
+    except Exception as e:
+        logger.error(f"Error fetching stock name: {e}")
+        return None
+
 def get_real_stock_price(stock_code):
     """실제 KIS API를 사용하여 주식 가격을 조회합니다."""
     try:
@@ -132,6 +202,7 @@ def get_real_stock_price(stock_code):
                 price = output.get('stck_prpr', '0')  # 현재가
                 change = output.get('prdy_vrss', '0')  # 전일대비
                 change_rate = output.get('prdy_ctrt', '0')  # 전일대비등락율
+                stock_name = output.get('hts_kor_isnm', '')  # 한글 종목명
                 
                 # 문자열을 정수로 변환
                 try:
@@ -139,10 +210,16 @@ def get_real_stock_price(stock_code):
                     change_int = int(change)
                     change_rate_float = float(change_rate)
                     
-                    return f"{stock_code} 현재 주가는 : '{price_int:,}원' 입니다. (전일대비 {change_int:+,}원, {change_rate_float:+.2f}%)"
+                    # 주식명 조회
+                    stock_name_display = get_stock_name(stock_code)
+                    name_display = f"{stock_name_display}({stock_code})" if stock_name_display else stock_code
+                    
+                    return f"{name_display} 현재 주가는 : '{price_int:,}원' 입니다. (전일대비 {change_int:+,}원, {change_rate_float:+.2f}%)"
                 except (ValueError, TypeError):
                     # 변환 실패 시 기본 형식으로 반환
-                    return f"{stock_code} 현재 주가는 : '{price}원' 입니다. (전일대비 {change}원, {change_rate}%)"
+                    stock_name_display = get_stock_name(stock_code)
+                    name_display = f"{stock_name_display}({stock_code})" if stock_name_display else stock_code
+                    return f"{name_display} 현재 주가는 : '{price}원' 입니다. (전일대비 {change}원, {change_rate}%)"
             else:
                 logger.error(f"KIS API error: {data.get('msg1')}")
                 return get_stock_price(stock_code)  # 더미 데이터로 폴백
@@ -207,5 +284,6 @@ def get_stock_price(stock_code):
 TOOLS = {
     'fetch_price': get_real_stock_price,  # 실제 KIS API 사용
     'fetch_news': get_stock_news,
-    'fetch_report': get_stock_reports
+    'fetch_report': get_stock_reports,
+    'get_stock_name': get_stock_name  # 주식명 조회 기능 추가
 }

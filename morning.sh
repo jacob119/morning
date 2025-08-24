@@ -42,6 +42,19 @@ check_venv() {
             exit 1
         fi
     fi
+    
+    # Python 경로 확인
+    if ! command -v python &> /dev/null && ! command -v python3 &> /dev/null; then
+        log_error "Python이 설치되지 않았거나 PATH에 없습니다."
+        exit 1
+    fi
+    
+    # Python 명령어 설정
+    if command -v python3 &> /dev/null; then
+        PYTHON_CMD="python3"
+    else
+        PYTHON_CMD="python"
+    fi
 }
 
 # 명령어 실행
@@ -50,37 +63,41 @@ case "$1" in
         log_header "시작"
         check_venv
         cd "$SCRIPT_DIR"
-        python manage.py start
+        $PYTHON_CMD manage.py start
         ;;
     stop)
         log_header "중지"
         cd "$SCRIPT_DIR"
-        python manage.py stop
+        check_venv
+        $PYTHON_CMD manage.py stop
         ;;
     restart)
         log_header "재시작"
         check_venv
         cd "$SCRIPT_DIR"
-        python manage.py restart
+        $PYTHON_CMD manage.py restart
         ;;
     status)
         log_header "상태 확인"
         cd "$SCRIPT_DIR"
-        python manage.py status
+        check_venv
+        $PYTHON_CMD manage.py status
         ;;
     logs)
         log_header "로그 확인"
         cd "$SCRIPT_DIR"
+        check_venv
         if [ -n "$2" ]; then
-            python manage.py logs "$2"
+            $PYTHON_CMD manage.py logs "$2"
         else
-            python manage.py logs
+            $PYTHON_CMD manage.py logs
         fi
         ;;
     clean)
         log_header "정리"
         cd "$SCRIPT_DIR"
-        python manage.py clean
+        check_venv
+        $PYTHON_CMD manage.py clean
         ;;
     *)
         echo -e "${BLUE}🌅 $APP_NAME - 주식 분석 시스템 관리 스크립트${NC}"

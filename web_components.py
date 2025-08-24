@@ -5,9 +5,24 @@ import plotly.express as px
 from datetime import datetime, timedelta
 import random
 import time
+from agent.tools import TOOLS
 
 def create_stock_metrics(stock_code: str):
     """주식 메트릭 카드를 생성합니다."""
+    # 주식명 조회
+    stock_name = ""
+    try:
+        if 'get_stock_name' in TOOLS:
+            stock_name = TOOLS['get_stock_name'](stock_code)
+    except Exception as e:
+        st.error(f"주식명 조회 중 오류: {e}")
+    
+    # 주식명 표시
+    if stock_name:
+        st.markdown(f"### 📊 {stock_name}({stock_code}) 분석")
+    else:
+        st.markdown(f"### 📊 {stock_code} 분석")
+    
     col1, col2, col3, col4 = st.columns(4)
     
     # 실제 데이터 대신 더미 데이터 사용
@@ -81,8 +96,22 @@ def create_stock_chart(stock_code: str, days: int = 30):
         name="주가"
     )])
     
+    # 주식명 조회
+    stock_name = ""
+    try:
+        if 'get_stock_name' in TOOLS:
+            stock_name = TOOLS['get_stock_name'](stock_code)
+    except Exception:
+        pass
+    
+    # 차트 제목 설정
+    if stock_name:
+        chart_title = f"{stock_name}({stock_code}) 주가 차트 ({days}일)"
+    else:
+        chart_title = f"{stock_code} 주가 차트 ({days}일)"
+    
     fig.update_layout(
-        title=f"{stock_code} 주가 차트 ({days}일)",
+        title=chart_title,
         xaxis_title="날짜",
         yaxis_title="가격 (원)",
         height=500,
@@ -176,7 +205,11 @@ def display_analysis_result(result):
         st.warning("분석 결과가 없습니다.")
         return
     
-    st.subheader("📋 분석 결과")
+    # 주식명 표시
+    if hasattr(result, 'stock_name') and result.stock_name:
+        st.subheader(f"📋 분석 결과 - {result.stock_name}({result.stock_code})")
+    else:
+        st.subheader(f"📋 분석 결과 - {result.stock_code}")
     
     # 진행률 표시
     progress_bar = st.progress(0)

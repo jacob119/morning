@@ -56,6 +56,7 @@ def get_llm():
 
 class StockState(BaseModel):
     stock_code: str 
+    stock_name: str = ""  # 주식명 추가
     info_log: list[str] = []
     next_action: str = ""
 
@@ -119,7 +120,20 @@ class StockAnalyzer:
     def analyze(self, stock_code: str) -> StockState:
         """주식을 분석합니다."""
         logger.info(f"Starting analysis for stock: {stock_code}")
-        state = StockState(stock_code=stock_code)
+        
+        # 주식명 조회
+        stock_name = ""
+        try:
+            if 'get_stock_name' in TOOLS:
+                stock_name = TOOLS['get_stock_name'](stock_code)
+                if stock_name:
+                    logger.info(f"주식명 조회 성공: {stock_code} -> {stock_name}")
+                else:
+                    logger.warning(f"주식명을 찾을 수 없음: {stock_code}")
+        except Exception as e:
+            logger.error(f"주식명 조회 중 오류: {e}")
+        
+        state = StockState(stock_code=stock_code, stock_name=stock_name or "")
         iteration = 0
         
         try:

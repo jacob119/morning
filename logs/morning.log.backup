@@ -1,0 +1,972 @@
+2025-08-24 11:48:28 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:48:28 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:48:28 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:48:28 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:48:28 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:48:28 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:48:28 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:48:28 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:48:28 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:48:28 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:48:28 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:48:28 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:48:28 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:48:28 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:48:28 - agent.analytics - INFO - 005930 현재 주가는 : '71,782원' 입니다.
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:48:28 - agent.analytics - INFO - 005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:48:28 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:48:28 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:48:28 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:53:49 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:53:49 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:53:49 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:53:49 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:53:49 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:53:49 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:53:49 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:53:49 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:53:49 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:53:49 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:53:49 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:53:49 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:53:49 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:53:49 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:53:49 - agent.analytics - INFO - 005930 현재 주가는 : '67,445원' 입니다.
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:53:49 - agent.analytics - INFO - 005930 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:53:49 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:53:49 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:53:49 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:53:56 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:53:56 - agent.analytics - INFO - Starting analysis for stock: 000660
+2025-08-24 11:53:56 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:53:56 - agent.analytics - INFO - Executing action: fetch_price for stock: 000660
+2025-08-24 11:53:56 - agent.tools - INFO - Fetching price for stock: 000660
+2025-08-24 11:53:56 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:53:56 - agent.analytics - INFO - Executing action: fetch_news for stock: 000660
+2025-08-24 11:53:56 - agent.tools - INFO - Fetching news for stock: 000660
+2025-08-24 11:53:56 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:53:56 - agent.analytics - INFO - Executing action: fetch_report for stock: 000660
+2025-08-24 11:53:56 - agent.tools - INFO - Fetching report for stock: 000660
+2025-08-24 11:53:56 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:53:56 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:53:56 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:53:56 - agent.analytics - INFO - 000660 현재 주가는 : '74,059원' 입니다.
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:53:56 - agent.analytics - INFO - 000660 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:53:56 - agent.analytics - INFO - 000660 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:53:56 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:53:56 - agent.analytics - INFO - Analysis completed for stock: 000660
+2025-08-24 11:59:43 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:43 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:43 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:43 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:43 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:43 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:43 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:43 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:43 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:43 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:43 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:43 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:43 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:43 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:43 - agent.analytics - INFO - 005930 현재 주가는 : '70,575원' 입니다.
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:43 - agent.analytics - INFO - 005930 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:43 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:59:43 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:43 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:46 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:46 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:46 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:46 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:46 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:46 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:46 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:46 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:46 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:46 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:46 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:46 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:46 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:46 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:46 - agent.analytics - INFO - 005930 현재 주가는 : '75,917원' 입니다.
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:46 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:46 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:59:46 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:46 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:47 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:47 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:47 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:47 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:47 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:47 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:47 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:47 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:47 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:47 - agent.analytics - INFO - 005930 현재 주가는 : '67,673원' 입니다.
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:47 - agent.analytics - INFO - 005930 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:47 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:47 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:47 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:47 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:47 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:47 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:47 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:47 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:47 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:47 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:47 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:47 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:47 - agent.analytics - INFO - 005930 현재 주가는 : '74,525원' 입니다.
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:47 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:47 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 11:59:47 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:47 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:48 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:48 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:48 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:48 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:48 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:48 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:48 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:48 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:48 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:48 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:48 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:48 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:48 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:48 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:48 - agent.analytics - INFO - 005930 현재 주가는 : '69,303원' 입니다.
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:48 - agent.analytics - INFO - 005930 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:48 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:59:48 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:48 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:49 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:49 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:49 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:49 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:49 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:49 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:49 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:49 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:49 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:49 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:49 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:49 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:49 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:49 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:49 - agent.analytics - INFO - 005930 현재 주가는 : '70,194원' 입니다.
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:49 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:49 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 11:59:49 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:49 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:50 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:50 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:50 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:50 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:50 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:50 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:50 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:50 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:50 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:50 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:50 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:50 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:50 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:50 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:50 - agent.analytics - INFO - 005930 현재 주가는 : '72,132원' 입니다.
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:50 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:50 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 11:59:50 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:50 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:51 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:51 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:51 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:51 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:51 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:51 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:51 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:51 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:51 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:51 - agent.analytics - INFO - 005930 현재 주가는 : '74,748원' 입니다.
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:51 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:51 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:51 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 11:59:51 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 11:59:51 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 11:59:51 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 11:59:51 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 11:59:51 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 11:59:51 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 11:59:51 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 11:59:51 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM decision: end
+2025-08-24 11:59:51 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 11:59:51 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 11:59:51 - agent.analytics - INFO - 005930 현재 주가는 : '76,311원' 입니다.
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 11:59:51 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 11:59:51 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 11:59:51 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 11:59:51 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:00:34 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:00:34 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:00:34 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:00:34 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:00:34 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:00:34 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:00:34 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:00:34 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:00:34 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:00:34 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:00:34 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:00:34 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:00:34 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:00:34 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:00:34 - agent.analytics - INFO - 005930 현재 주가는 : '71,143원' 입니다.
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:00:34 - agent.analytics - INFO - 005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:00:34 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:00:34 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:00:34 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:00:36 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:00:36 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:00:36 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:00:36 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:00:36 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:00:36 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:00:36 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:00:36 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:00:36 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:00:36 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:00:36 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:00:36 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:00:36 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:00:36 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:00:36 - agent.analytics - INFO - 005930 현재 주가는 : '75,656원' 입니다.
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:00:36 - agent.analytics - INFO - 005930 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:00:36 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 12:00:36 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:00:36 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:00:49 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:00:49 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:00:49 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:00:49 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:00:49 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:00:49 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:00:49 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:00:49 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:00:49 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:00:49 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:00:49 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:00:49 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:00:49 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:00:49 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:00:49 - agent.analytics - INFO - 005930 현재 주가는 : '76,698원' 입니다.
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:00:49 - agent.analytics - INFO - 005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:00:49 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:00:49 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:00:49 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:00:52 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:00:52 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:00:52 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:00:52 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:00:52 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:00:52 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:00:52 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:00:52 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:00:52 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:00:52 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:00:52 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:00:52 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:00:52 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:00:52 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:00:52 - agent.analytics - INFO - 005930 현재 주가는 : '73,539원' 입니다.
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:00:52 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:00:52 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:00:52 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:00:52 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:01:08 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:01:08 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:01:08 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:01:08 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:01:08 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:01:08 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:01:08 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:01:08 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:01:08 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:01:08 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:01:08 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:01:08 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:01:08 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:01:08 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:01:08 - agent.analytics - INFO - 005930 현재 주가는 : '74,702원' 입니다.
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:01:08 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:01:08 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:01:08 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:01:08 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:01:15 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:01:15 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:01:15 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:01:15 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:01:15 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:01:15 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:01:15 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:01:15 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:01:15 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:01:15 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:01:15 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:01:15 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:01:15 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:01:15 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:01:15 - agent.analytics - INFO - 005930 현재 주가는 : '76,273원' 입니다.
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:01:15 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:01:15 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 12:01:15 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:01:15 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:01:18 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:01:18 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:01:18 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:01:18 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:01:18 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:01:18 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:01:18 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:01:18 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:01:18 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:01:18 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:01:18 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:01:18 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:01:18 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:01:18 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:01:18 - agent.analytics - INFO - 005930 현재 주가는 : '74,590원' 입니다.
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:01:18 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:01:18 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 12:01:18 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:01:18 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:02:22 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:02:22 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:02:22 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:02:22 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:02:22 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:02:22 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:02:22 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:02:22 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:02:22 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:02:22 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:02:22 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:02:22 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:02:22 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:02:22 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:02:22 - agent.analytics - INFO - 005930 현재 주가는 : '72,799원' 입니다.
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:02:22 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:02:22 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:02:22 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:02:22 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:03:37 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:03:37 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:03:37 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:03:37 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:03:37 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:03:37 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:03:37 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:03:37 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:03:37 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:03:37 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:03:37 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:03:37 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:03:37 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:03:37 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:03:37 - agent.analytics - INFO - 005930 현재 주가는 : '67,085원' 입니다.
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:03:37 - agent.analytics - INFO - 005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:03:37 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:03:37 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:03:37 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:03:42 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:03:42 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:03:42 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:03:42 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:03:42 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:03:42 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:03:42 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:03:42 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:03:42 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:03:42 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:03:42 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:03:42 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:03:42 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:03:42 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:03:42 - agent.analytics - INFO - 005930 현재 주가는 : '75,731원' 입니다.
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:03:42 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:03:42 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 12:03:42 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:03:42 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:04:21 - test - INFO - ✅ Logger test 성공
+2025-08-24 12:04:32 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:04:32 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:04:32 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:04:32 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:04:32 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:04:32 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:04:32 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:04:32 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:04:32 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:04:32 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:04:32 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:04:32 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:04:32 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:04:32 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:04:32 - agent.analytics - INFO - 005930 현재 주가는 : '70,482원' 입니다.
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:04:32 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:04:32 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 12:04:32 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:04:32 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:05:18 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:05:18 - agent.analytics - INFO - Starting analysis for stock: 000660
+2025-08-24 12:05:18 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:05:18 - agent.analytics - INFO - Executing action: fetch_price for stock: 000660
+2025-08-24 12:05:18 - agent.tools - INFO - Fetching price for stock: 000660
+2025-08-24 12:05:18 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:05:18 - agent.analytics - INFO - Executing action: fetch_news for stock: 000660
+2025-08-24 12:05:18 - agent.tools - INFO - Fetching news for stock: 000660
+2025-08-24 12:05:18 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:05:18 - agent.analytics - INFO - Executing action: fetch_report for stock: 000660
+2025-08-24 12:05:18 - agent.tools - INFO - Fetching report for stock: 000660
+2025-08-24 12:05:18 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:05:18 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:05:18 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:05:18 - agent.analytics - INFO - 000660 현재 주가는 : '69,988원' 입니다.
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:05:18 - agent.analytics - INFO - 000660 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:05:18 - agent.analytics - INFO - 000660 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:05:18 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:05:18 - agent.analytics - INFO - Analysis completed for stock: 000660
+2025-08-24 12:06:22 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:06:22 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:06:22 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:06:22 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:06:22 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:06:22 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:06:22 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:06:22 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:06:22 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:06:22 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:06:22 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:06:22 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:06:22 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:06:22 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:06:22 - agent.analytics - INFO - 005930 현재 주가는 : '76,463원' 입니다.
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:06:22 - agent.analytics - INFO - 005930 관련 최신 뉴스: '해외 진출 확대' 입니다.
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:06:22 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:06:22 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:06:22 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:09:16 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:09:16 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:09:16 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:09:16 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:09:16 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:09:16 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:09:16 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:09:16 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:09:16 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:09:16 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:09:16 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:09:16 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:09:16 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:09:16 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:09:16 - agent.analytics - INFO - 005930 현재 주가는 : '72,443원' 입니다.
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:09:16 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:09:16 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Strong Buy, 목표가 85,000원' 입니다.
+2025-08-24 12:09:16 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:09:16 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:09:17 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:09:17 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:09:17 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:09:17 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:09:17 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:09:17 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:09:17 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:09:17 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:09:17 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:09:17 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:09:17 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:09:17 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:09:17 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:09:17 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:09:17 - agent.analytics - INFO - 005930 현재 주가는 : '75,124원' 입니다.
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:09:17 - agent.analytics - INFO - 005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:09:17 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Buy, 목표가 80,000원' 입니다.
+2025-08-24 12:09:17 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:09:17 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:09:28 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:09:28 - agent.analytics - INFO - Starting analysis for stock: 000660
+2025-08-24 12:09:28 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:09:28 - agent.analytics - INFO - Executing action: fetch_price for stock: 000660
+2025-08-24 12:09:28 - agent.tools - INFO - Fetching price for stock: 000660
+2025-08-24 12:09:28 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:09:28 - agent.analytics - INFO - Executing action: fetch_news for stock: 000660
+2025-08-24 12:09:28 - agent.tools - INFO - Fetching news for stock: 000660
+2025-08-24 12:09:28 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:09:28 - agent.analytics - INFO - Executing action: fetch_report for stock: 000660
+2025-08-24 12:09:28 - agent.tools - INFO - Fetching report for stock: 000660
+2025-08-24 12:09:28 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:09:28 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:09:28 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:09:28 - agent.analytics - INFO - 000660 현재 주가는 : '68,924원' 입니다.
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:09:28 - agent.analytics - INFO - 000660 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:09:28 - agent.analytics - INFO - 000660 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 12:09:28 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:09:28 - agent.analytics - INFO - Analysis completed for stock: 000660
+2025-08-24 12:09:34 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:09:34 - agent.analytics - INFO - Starting analysis for stock: 000660
+2025-08-24 12:09:34 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:09:34 - agent.analytics - INFO - Executing action: fetch_price for stock: 000660
+2025-08-24 12:09:34 - agent.tools - INFO - Fetching price for stock: 000660
+2025-08-24 12:09:34 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:09:34 - agent.analytics - INFO - Executing action: fetch_news for stock: 000660
+2025-08-24 12:09:34 - agent.tools - INFO - Fetching news for stock: 000660
+2025-08-24 12:09:34 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:09:34 - agent.analytics - INFO - Executing action: fetch_report for stock: 000660
+2025-08-24 12:09:34 - agent.tools - INFO - Fetching report for stock: 000660
+2025-08-24 12:09:34 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:09:34 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:09:34 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:09:34 - agent.analytics - INFO - 000660 현재 주가는 : '74,096원' 입니다.
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:09:34 - agent.analytics - INFO - 000660 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:09:34 - agent.analytics - INFO - 000660 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 12:09:34 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:09:34 - agent.analytics - INFO - Analysis completed for stock: 000660
+2025-08-24 12:09:49 - agent.analytics - INFO - Using DummyLLM (no API key configured)
+2025-08-24 12:09:49 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:09:49 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:09:49 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:09:49 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:09:49 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:09:49 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:09:49 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:09:49 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:09:49 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:09:49 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:09:49 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:09:49 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:09:49 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:09:49 - agent.analytics - INFO - 005930 현재 주가는 : '76,245원' 입니다.
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:09:49 - agent.analytics - INFO - 005930 관련 최신 뉴스: '시장 점유율 확대 중' 입니다.
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:09:49 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 12:09:49 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:09:49 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:14:28 - agent.analytics - INFO - Using OpenAI ChatGPT
+2025-08-24 12:14:33 - agent.analytics - INFO - Using OpenAI ChatGPT
+2025-08-24 12:14:34 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:14:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-24 12:14:35 - agent.analytics - ERROR - Error in decide_next_action: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************B4Pd. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-24 12:14:35 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:14:35 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:14:35 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:14:35 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:15:46 - agent.tools - ERROR - KIS token request failed: 403
+2025-08-24 12:15:46 - agent.tools - WARNING - Failed to get KIS token, using dummy data
+2025-08-24 12:15:46 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:15:57 - agent.analytics - INFO - Using OpenAI ChatGPT
+2025-08-24 12:15:58 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:15:58 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-24 12:15:58 - agent.analytics - ERROR - Error in decide_next_action: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************B4Pd. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-24 12:15:58 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:15:58 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:15:58 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:15:58 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:16:33 - agent.analytics - INFO - Using OpenAI ChatGPT
+2025-08-24 12:16:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-24 12:16:34 - agent.analytics - ERROR - OpenAI API test failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************B4Pd. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-24 12:16:34 - agent.analytics - INFO - Falling back to DummyLLM due to API error
+2025-08-24 12:16:34 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:16:34 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:16:34 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:16:34 - agent.tools - ERROR - KIS token request failed: 403
+2025-08-24 12:16:34 - agent.tools - WARNING - Failed to get KIS token, using dummy data
+2025-08-24 12:16:34 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:16:34 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:16:34 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:16:34 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:16:34 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:16:34 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:16:34 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:16:34 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:16:34 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:16:34 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:16:34 - agent.analytics - INFO - 005930 현재 주가는 : '70,585원' 입니다.
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:16:34 - agent.analytics - INFO - 005930 관련 최신 뉴스: '분기 실적 호조' 입니다.
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:16:34 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 12:16:34 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:16:34 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:22:19 - agent.tools - ERROR - KIS token request failed: 403
+2025-08-24 12:22:36 - agent.tools - INFO - KIS 토큰 요청 URL: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-08-24 12:22:36 - agent.tools - INFO - KIS APP_KEY: PSl24q1Ijw7e9NDpYWVo...
+2025-08-24 12:22:36 - agent.tools - INFO - KIS APP_SECRET: 3A4O6/ZDEGN72Jx58G4E...
+2025-08-24 12:22:36 - agent.tools - INFO - KIS 토큰 응답 상태: 403
+2025-08-24 12:22:36 - agent.tools - INFO - KIS 토큰 응답 헤더: {'Date': 'Sun, 24 Aug 2025 03:22:36 GMT', 'X-Content-Type-Options': 'nosniff', 'Content-Length': '84', 'X-ORACLE-DMS-ECID': '006FHFnM0QpFw0zzzR06zzEiXqE0jYYz10003C100ANnT', 'X-ORACLE-DMS-RID': '0:1', 'X-XSS-Protection': '1; mode=block', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json'}
+2025-08-24 12:22:36 - agent.tools - ERROR - KIS token request failed: 403
+2025-08-24 12:22:36 - agent.tools - ERROR - KIS token response: {"error_description":"서버 에러가 발생했습니다.","error_code":"EGW00002"}
+2025-08-24 12:22:52 - agent.tools - INFO - KIS 토큰 요청 URL: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-08-24 12:22:52 - agent.tools - INFO - KIS APP_KEY: PSl24q1Ijw7e9NDpYWVo...
+2025-08-24 12:22:52 - agent.tools - INFO - KIS APP_SECRET: 3A4O6/ZDEGN72Jx58G4E...
+2025-08-24 12:22:53 - agent.tools - INFO - KIS 토큰 응답 상태: 200
+2025-08-24 12:22:53 - agent.tools - INFO - KIS 토큰 응답 헤더: {'Date': 'Sun, 24 Aug 2025 03:22:53 GMT', 'X-Content-Type-Options': 'nosniff', 'Content-Length': '457', 'X-ORACLE-DMS-ECID': '006FHFoL40aFw0zzzR06zzEjX2E0jYYz30007Yv002VaF', 'X-ORACLE-DMS-RID': '0:1', 'X-XSS-Protection': '1; mode=block', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json'}
+2025-08-24 12:22:53 - agent.tools - INFO - KIS 토큰 응답 데이터: {'access_token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6ImE5MjgxZTQ5LTEzNGYtNGNhNi05NDM0LWRhYTRkNjUxYjZkOCIsInByZHRfY2QiOiIiLCJpc3MiOiJ1bm9ndyIsImV4cCI6MTc1NjA5MjE3MywiaWF0IjoxNzU2MDA1NzczLCJqdGkiOiJQU2wyNHExSWp3N2U5TkRwWVdWb1FaWWpUT0V0RDl0cW5BWXQifQ.Vn92Wm_n6GApaL7JTp92qaob6DvW8QNTKWQ7Fvq4jp9C5r12kgQyqNrIncz5b6p-JmnQJMZhfzK6rT90Ah4FVA', 'access_token_token_expired': '2025-08-25 12:22:53', 'token_type': 'Bearer', 'expires_in': 86400}
+2025-08-24 12:22:59 - agent.tools - INFO - KIS 토큰 요청 URL: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-08-24 12:22:59 - agent.tools - INFO - KIS APP_KEY: PSl24q1Ijw7e9NDpYWVo...
+2025-08-24 12:22:59 - agent.tools - INFO - KIS APP_SECRET: 3A4O6/ZDEGN72Jx58G4E...
+2025-08-24 12:22:59 - agent.tools - INFO - KIS 토큰 응답 상태: 403
+2025-08-24 12:22:59 - agent.tools - INFO - KIS 토큰 응답 헤더: {'Date': 'Sun, 24 Aug 2025 03:22:59 GMT', 'X-Content-Type-Options': 'nosniff', 'Content-Length': '115', 'X-ORACLE-DMS-ECID': '006FHFoj9hvFw0zzzR06zzEjX2E0jYYz30007Yv002Vir', 'X-ORACLE-DMS-RID': '0:1', 'X-XSS-Protection': '1; mode=block', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive', 'Content-Type': 'application/json'}
+2025-08-24 12:22:59 - agent.tools - ERROR - KIS token request failed: 403
+2025-08-24 12:22:59 - agent.tools - ERROR - KIS token response: {"error_description":"접근토큰 발급 잠시 후 다시 시도하세요(1분당 1회)","error_code":"EGW00133"}
+2025-08-24 12:22:59 - agent.tools - WARNING - Failed to get KIS token, using dummy data
+2025-08-24 12:22:59 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:24:11 - agent.tools - INFO - 새로운 KIS 토큰 발급 요청
+2025-08-24 12:24:11 - agent.tools - INFO - KIS 토큰 요청 URL: https://openapi.koreainvestment.com:9443/oauth2/tokenP
+2025-08-24 12:24:11 - agent.tools - INFO - KIS APP_KEY: PSl24q1Ijw7e9NDpYWVo...
+2025-08-24 12:24:11 - agent.tools - INFO - KIS APP_SECRET: 3A4O6/ZDEGN72Jx58G4E...
+2025-08-24 12:24:11 - agent.tools - INFO - KIS 토큰 응답 상태: 200
+2025-08-24 12:24:11 - agent.tools - INFO - KIS 토큰 발급 성공
+2025-08-24 12:24:11 - agent.tools - INFO - KIS 토큰 캐시 저장 완료 (만료: 2025-08-25 12:24:11.244700)
+2025-08-24 12:24:17 - agent.tools - INFO - 캐시된 KIS 토큰 사용
+2025-08-24 12:24:22 - agent.tools - INFO - 캐시된 KIS 토큰 사용
+2025-08-24 12:24:22 - agent.tools - ERROR - Error fetching real stock price: Cannot specify ',' with 's'.
+2025-08-24 12:24:22 - agent.tools - INFO - Fetching price for stock: 005930
+2025-08-24 12:24:37 - agent.tools - INFO - 캐시된 KIS 토큰 사용
+2025-08-24 12:24:43 - agent.analytics - INFO - Using OpenAI ChatGPT
+2025-08-24 12:24:44 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-08-24 12:24:44 - agent.analytics - ERROR - OpenAI API test failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************B4Pd. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-08-24 12:24:44 - agent.analytics - INFO - Falling back to DummyLLM due to API error
+2025-08-24 12:24:44 - agent.analytics - INFO - Starting analysis for stock: 005930
+2025-08-24 12:24:44 - agent.analytics - INFO - DummyLLM decision: fetch_price (call #1)
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM decision: fetch_price
+2025-08-24 12:24:44 - agent.analytics - INFO - Executing action: fetch_price for stock: 005930
+2025-08-24 12:24:44 - agent.tools - INFO - 캐시된 KIS 토큰 사용
+2025-08-24 12:24:44 - agent.analytics - INFO - DummyLLM decision: fetch_news (call #2)
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM decision: fetch_news
+2025-08-24 12:24:44 - agent.analytics - INFO - Executing action: fetch_news for stock: 005930
+2025-08-24 12:24:44 - agent.tools - INFO - Fetching news for stock: 005930
+2025-08-24 12:24:44 - agent.analytics - INFO - DummyLLM decision: fetch_report (call #3)
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM decision: fetch_report
+2025-08-24 12:24:44 - agent.analytics - INFO - Executing action: fetch_report for stock: 005930
+2025-08-24 12:24:44 - agent.tools - INFO - Fetching report for stock: 005930
+2025-08-24 12:24:44 - agent.analytics - INFO - DummyLLM decision: end (call #4)
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM decision: end
+2025-08-24 12:24:44 - agent.analytics - INFO - Analysis completed by LLM decision
+2025-08-24 12:24:44 - agent.analytics - INFO - === Analysis Results ===
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM 결정: fetch_price
+2025-08-24 12:24:44 - agent.analytics - INFO - 005930 현재 주가는 : '71,400원' 입니다. (전일대비 +800원, +1.13%)
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM 결정: fetch_news
+2025-08-24 12:24:44 - agent.analytics - INFO - 005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM 결정: fetch_report
+2025-08-24 12:24:44 - agent.analytics - INFO - 005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
+2025-08-24 12:24:44 - agent.analytics - INFO - LLM 결정: end
+2025-08-24 12:24:44 - agent.analytics - INFO - Analysis completed for stock: 005930
+2025-08-24 12:28:53.678 Port 8501 is already in use
+/Users/jacob119/dev/morning/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.45.151:8501
+  External URL: http://58.226.250.7:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+  Stopping...
+/Users/jacob119/dev/morning/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.45.151:8501
+  External URL: http://58.226.250.7:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+  Stopping...
+/Users/jacob119/dev/morning/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.45.151:8501
+  External URL: http://58.226.250.7:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+  Stopping...
+/Users/jacob119/dev/morning/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.45.151:8501
+  External URL: http://58.226.250.7:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+  Stopping...
+/Users/jacob119/dev/morning/venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.45.151:8501
+  External URL: http://58.226.250.7:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+  Stopping...
