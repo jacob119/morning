@@ -5,11 +5,27 @@ import plotly.express as px
 from datetime import datetime, timedelta
 import random
 import time
-from agent.tools import TOOLS
+import sys
+import os
+
+# 프로젝트 루트를 Python 경로에 추가
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+try:
+    from agent.tools import TOOLS
+except ImportError as e:
+    st.error(f"모듈 import 오류: {e}")
+    st.info("시스템을 재시작해주세요.")
+    st.stop()
 
 def create_stock_metrics(stock_code: str):
     """주식 메트릭 카드를 생성합니다."""
     try:
+        # 주식 코드 유효성 검사
+        if not stock_code or stock_code.strip() == "":
+            st.info("주식 코드를 입력해주세요.")
+            return
+        
         # 주식명 조회
         stock_name = ""
         try:
@@ -81,15 +97,15 @@ def create_stock_metrics(stock_code: str):
                             value=f"{per:.1f}"
                         )
                 else:
-                    st.error("실시간 데이터 파싱에 실패했습니다.")
-                    st.info("KIS API에서 데이터를 가져올 수 없습니다.")
+                    st.warning("실시간 데이터를 가져올 수 없습니다.")
+                    st.info("주식 코드를 확인하거나 잠시 후 다시 시도해주세요.")
                     
             except Exception as e:
-                st.error(f"실시간 데이터 조회 중 오류: {e}")
-                st.info("KIS API 연결을 확인해주세요.")
+                st.warning(f"데이터 조회 중 일시적 오류가 발생했습니다.")
+                st.info("잠시 후 다시 시도해주세요.")
         else:
-            st.error("KIS API 도구를 찾을 수 없습니다.")
-            st.info("API 설정을 확인해주세요.")
+            st.warning("API 도구를 찾을 수 없습니다.")
+            st.info("시스템 설정을 확인해주세요.")
             
     except Exception as e:
         st.error(f"주식 메트릭 생성 중 오류가 발생했습니다: {e}")
@@ -289,12 +305,16 @@ def create_sidebar_config():
     with st.sidebar:
         st.title("⚙️ 설정")
         
-        # 주식 코드 입력
+        # 주식 코드 입력 (세션 상태에서 기본값 가져오기)
+        default_stock_code = st.session_state.get('stock_code', '005930')
         stock_code = st.text_input(
             "주식 코드",
-            value="005930",
+            value=default_stock_code,
             help="분석할 주식 코드를 입력하세요 (예: 005930)"
         )
+        
+        # 주식 코드를 세션 상태에 저장
+        st.session_state.stock_code = stock_code
         
         # 분석 옵션
         st.subheader("📊 분석 옵션")
@@ -309,6 +329,8 @@ def create_sidebar_config():
         if st.button("🚀 분석 시작", type="primary"):
             st.session_state.run_analysis = True
         else:
-            st.session_state.run_analysis = False
+            # 세션 상태 초기화 방지
+            if 'run_analysis' not in st.session_state:
+                st.session_state.run_analysis = False
         
         return stock_code, max_iterations, chart_days

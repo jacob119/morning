@@ -3,15 +3,37 @@ import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
 import random
+import sys
+import os
 from datetime import datetime, timedelta
-from agent.analytics import run, StockAnalyzer
-from agent.tools import TOOLS
+
+# 프로젝트 루트를 Python 경로에 추가
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+try:
+    from agent.analytics import run, StockAnalyzer
+    from agent.tools import TOOLS
+except ImportError as e:
+    st.error(f"모듈 import 오류: {e}")
+    st.info("시스템을 재시작해주세요.")
+    st.stop()
+
 import time
-from .web_components import (
+from ui.web_components import (
     create_stock_metrics, create_stock_chart, create_volume_chart,
     create_analysis_history, create_portfolio_summary, display_analysis_result,
     create_sidebar_config
 )
+
+# Streamlit 캐싱 설정
+@st.cache_data(ttl=300)  # 5분 캐시
+def get_cached_data():
+    """캐시된 데이터를 반환합니다."""
+    return {
+        'default_stock_code': '005930',
+        'default_iterations': 10,
+        'default_chart_days': 30
+    }
 
 # 페이지 설정
 st.set_page_config(
@@ -52,8 +74,26 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 사이드바 설정
-stock_code, max_iterations, chart_days = create_sidebar_config()
+# 캐시된 기본 데이터 가져오기
+cached_data = get_cached_data()
+
+# 세션 상태 초기화
+if 'stock_code' not in st.session_state:
+    st.session_state.stock_code = cached_data['default_stock_code']
+if 'run_analysis' not in st.session_state:
+    st.session_state.run_analysis = False
+if 'analysis_result' not in st.session_state:
+    st.session_state.analysis_result = None
+
+# 안전한 사이드바 설정
+try:
+    stock_code, max_iterations, chart_days = create_sidebar_config()
+except Exception as e:
+    st.error(f"사이드바 설정 중 오류: {e}")
+    # 캐시된 기본값 사용
+    stock_code = st.session_state.get('stock_code', cached_data['default_stock_code'])
+    max_iterations = cached_data['default_iterations']
+    chart_days = cached_data['default_chart_days']
 
 # 메인 헤더
 st.markdown('<h1 class="main-header">📈 Morning - 주식 분석 대시보드</h1>', unsafe_allow_html=True)
@@ -64,8 +104,12 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 실시간 분석", "📈 차트", 
 with tab1:
     st.header("📊 실시간 주식 분석")
     
-    # 주식 메트릭 카드
-    create_stock_metrics(stock_code)
+    # 안전한 주식 메트릭 카드 생성
+    try:
+        create_stock_metrics(stock_code)
+    except Exception as e:
+        st.error(f"주식 메트릭 생성 중 오류: {e}")
+        st.info("페이지를 새로고침하거나 잠시 후 다시 시도해주세요.")
     
     # 분석 실행
     if st.session_state.get('run_analysis', False):
@@ -105,19 +149,28 @@ with tab2:
     chart_container = st.container()
     
     with chart_container:
-        # 주가 차트
-        fig_stock = create_stock_chart(stock_code, chart_days)
-        st.plotly_chart(fig_stock, use_container_width=True)
-        
-        # 거래량 차트
-        fig_volume = create_volume_chart(stock_code, chart_days)
-        st.plotly_chart(fig_volume, use_container_width=True)
+        try:
+            # 주가 차트
+            fig_stock = create_stock_chart(stock_code, chart_days)
+            st.plotly_chart(fig_stock, use_container_width=True)
+            
+            # 거래량 차트
+            fig_volume = create_volume_chart(stock_code, chart_days)
+            st.plotly_chart(fig_volume, use_container_width=True)
+        except Exception as e:
+            st.error(f"차트 생성 중 오류: {e}")
+            st.info("차트를 불러올 수 없습니다.")
 
 with tab3:
     st.header("💼 포트폴리오")
     
-    # 포트폴리오 요약
-    portfolio_df = create_portfolio_summary()
+    # 안전한 포트폴리오 요약
+    try:
+        portfolio_df = create_portfolio_summary()
+    except Exception as e:
+        st.error(f"포트폴리오 생성 중 오류: {e}")
+        st.info("포트폴리오 정보를 불러올 수 없습니다.")
+        portfolio_df = None
     
     # 포트폴리오 메트릭
     col1, col2, col3, col4 = st.columns(4)
@@ -153,7 +206,10 @@ with tab3:
     
     # 포트폴리오 상세
     st.subheader("📋 보유 종목")
-    st.dataframe(portfolio_df, use_container_width=True)
+    if portfolio_df is not None:
+        st.dataframe(portfolio_df, use_container_width=True)
+    else:
+        st.info("포트폴리오 데이터를 불러올 수 없습니다.")
     
     # 포트폴리오 차트
     st.subheader("📊 포트폴리오 분포")
@@ -196,9 +252,13 @@ with tab3:
 with tab4:
     st.header("📋 분석 기록")
     
-    # 분석 기록 표시
-    history_df = create_analysis_history()
-    st.dataframe(history_df, use_container_width=True)
+    # 안전한 분석 기록 표시
+    try:
+        history_df = create_analysis_history()
+        st.dataframe(history_df, use_container_width=True)
+    except Exception as e:
+        st.error(f"분석 기록 생성 중 오류: {e}")
+        st.info("분석 기록을 불러올 수 없습니다.")
     
     # 분석 통계
     st.subheader("📊 분석 통계")
