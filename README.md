@@ -11,11 +11,50 @@
 - 📝 구조화된 로깅 시스템
 
 ## 🚀 최근 개선사항
+- ✅ **Exa MCP 통합**: 실시간 회사 정보 기반 정확한 목표가 설정
 - ✅ 의존성 패키지 단순화 및 호환성 개선
 - ✅ 에러 핸들링 및 로깅 시스템 강화
 - ✅ 클래스 기반 분석 에이전트 구조
 - ✅ 환경변수 기반 설정 관리
 - ✅ 무한 루프 방지 및 안정성 향상
+
+## 🔍 Exa MCP 통합 기능
+
+### 📊 AI 기반 회사 정보 분석
+- **실시간 회사 정보 조회**: Exa MCP를 통한 최신 기업 데이터 수집
+- **산업별 분석**: 기술, 금융, 헬스케어 등 산업별 맞춤 분석
+- **성장 잠재력 평가**: 회사의 성장 가능성과 위험도 분석
+- **시장 규모 분류**: 대형주/중형주/소형주별 차별화된 분석
+
+### 🎯 정확한 목표가 설정
+- **회사 정보 기반 계산**: 산업, 성장성, 시장 규모를 고려한 목표가 산정
+- **투자의견 자동 생성**: Buy, Hold, Sell, Strong Buy, Outperform 자동 결정
+- **투자 근거 생성**: 회사 특성에 맞는 구체적인 투자 근거 제공
+- **MCP 우선 리포트 생성**: OpenAI 대신 MCP를 우선적으로 사용하여 일관된 분석 제공
+
+### 🔧 설정 및 사용법
+```bash
+# MCP 서버 설정 (선택사항)
+MCP_EXA_SERVER_URL=https://server.smithery.ai/exa/mcp
+ENABLE_MCP=true
+MCP_TIMEOUT=30
+```
+
+### 🧪 테스트
+```bash
+# 가상환경 활성화
+source venv/bin/activate  # macOS/Linux
+# venv\Scripts\activate   # Windows
+
+# Exa MCP 통합 기능 테스트
+python test/test_exa_integration.py
+
+# 기본 기능 테스트
+python test/test_stock_tools.py
+
+# 모든 테스트 실행
+python test/test_exa_integration.py && python test/test_stock_tools.py
+```
 
 
 ### 1. 실행 환경 설정
@@ -88,21 +127,40 @@ morning/
 
 
 ### 3. 환경 설정
-.env.example 파일을 .env로 복사하고 실제 API 키를 입력합니다.
+.env 파일을 생성하고 실제 API 키를 입력합니다.
 
 ```bash
-cp .env.example .env
+# .env 파일 생성
+touch .env
 ```
 
 .env 파일에서 다음 항목들을 설정하세요:
 ```bash
 # OpenAI API 설정
 OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL=gpt-4o
+OPENAI_TEMPERATURE=0
 
 # KIS API 설정 (한국투자증권)
 KIS_APP_KEY=your_kis_app_key_here
 KIS_APP_SECRET=your_kis_app_secret_here
 KIS_ACCOUNT_NO=your_account_number_here
+KIS_OPTION_ACCOUNT_NO=your_option_account_no_here
+KIS_BASE_URL=https://openapi.koreainvestment.com:9443
+KIS_WS_URL=ws://ops.koreainvestment.com:31000
+
+# MCP 서버 설정 (Exa MCP 통합 기능)
+MCP_EXA_SERVER_URL=https://server.smithery.ai/exa/mcp
+ENABLE_MCP=true
+MCP_TIMEOUT=30
+
+# 로깅 설정
+LOG_LEVEL=INFO
+LOG_FILE=logs/morning.log
+
+# 애플리케이션 설정
+MAX_ITERATIONS=10
+ENABLE_CACHE=true
 ```
 
 ### 4. 실행

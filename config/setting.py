@@ -42,6 +42,11 @@ API_CONFIG = {
         "MODEL_NAME": os.getenv("OPENAI_MODEL", "gpt-4o"),
         "TEMPERATURE": int(os.getenv("OPENAI_TEMPERATURE", "0"))
     },
+    "MCP": {
+        "EXA_SERVER_URL": os.getenv("MCP_EXA_SERVER_URL", "https://server.smithery.ai/exa/mcp"),
+        "ENABLE_MCP": os.getenv("ENABLE_MCP", "true").lower() == "true",
+        "TIMEOUT": int(os.getenv("MCP_TIMEOUT", "30"))
+    },
 }
 
 # 로깅 설정
