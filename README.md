@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ```plaintext
 morning/
-├── agent/
+├── agent/                        # 🤖 AI 에이전트 관련
 │   ├── analytics.py              # 🧠 주식 분석 에이전트 (StockAnalyzer)
 │   ├── tools.py                  # 🛠️ 분석 도구들 (가격, 뉴스, 리포트)
 │   ├── core/
@@ -54,7 +54,7 @@ morning/
 │   │   └── assets.py             # (TBD) Optimized Prompts
 │   ├── decision.py               # (TBD) Super-Agent
 │   └── evaluation.py             # (TBD) Portfolio Evaluation
-├── api/
+├── api/                          # 🌐 API 관련
 │   ├── ki/
 │   │   ├── kis_auth.py           # 🔐 KIS 인증
 │   │   ├── kis_domstk.py         # 📊 KIS 주식 API
@@ -62,15 +62,22 @@ morning/
 │   ├── api_client.py             # 🌐 API 클라이언트
 │   ├── portfolio.py              # (TBD) 포트폴리오 관리
 │   └── trader.py                 # (TBD) 거래 실행
-├── config/
-│   └── setting.py                # ⚙️ 환경변수 기반 설정
-├── utils/
+├── ui/                           # 🖥️ 웹 UI 관련
+│   ├── dashboard.py              # 🌐 Streamlit 대시보드
+│   ├── web_components.py         # 🧩 웹 UI 컴포넌트
+│   └── __init__.py               # UI 패키지 초기화
+├── scripts/                      # ⚙️ 스크립트 및 운영 관리
+│   ├── manage.py                 # 🐍 애플리케이션 관리
+│   ├── morning.sh                # 🐚 쉘 관리 스크립트
+│   └── __init__.py               # 스크립트 패키지 초기화
+├── config/                       # ⚙️ 설정 파일
+│   └── setting.py                # 환경변수 기반 설정
+├── utils/                        # 🛠️ 유틸리티
 │   └── logger.py                 # 📝 로깅 시스템
+├── dashboard.py                  # 🚀 대시보드 실행 진입점
+├── manage.py                     # 🚀 관리 스크립트 진입점
+├── morning.sh                    # 🚀 쉘 스크립트 진입점
 ├── app.py                        # 🚀 CLI 메인 실행 파일
-├── dashboard.py                  # 🌐 웹 대시보드
-├── web_components.py             # 🧩 웹 컴포넌트
-├── manage.py                     # ⚙️ 애플리케이션 관리 스크립트
-├── morning.sh                    # 🐚 쉘 관리 스크립트
 ├── .env.example                  # 📋 환경변수 템플릿
 ├── requirements.txt              # 📦 전체 의존성
 ├── requirements_simple.txt       # 📦 핵심 의존성만
@@ -163,7 +170,23 @@ $ python app.py
 2025-08-24 11:48:28 - agent.analytics - INFO - Analysis completed for stock: 005930
 ```
 
-### 6. 주요 기능 설명
+### 6. 폴더 구조 설명
+
+#### 📁 주요 디렉토리
+- **`agent/`**: AI 에이전트 관련 모듈 (분석, 의사결정, 도구)
+- **`api/`**: 외부 API 연동 모듈 (KIS API, 포트폴리오, 거래)
+- **`ui/`**: 웹 UI 관련 모듈 (Streamlit 대시보드, 컴포넌트)
+- **`scripts/`**: 운영 관리 스크립트 (시작/중지/상태 관리)
+- **`config/`**: 설정 파일 (환경변수, API 키)
+- **`utils/`**: 유틸리티 모듈 (로깅, 헬퍼 함수)
+
+#### 🚀 진입점 파일
+- **`dashboard.py`**: 웹 대시보드 실행 진입점
+- **`manage.py`**: 애플리케이션 관리 진입점
+- **`morning.sh`**: 쉘 스크립트 진입점
+- **`app.py`**: CLI 실행 진입점
+
+### 7. 주요 기능 설명
 
 #### 🧠 StockAnalyzer 클래스
 - **무한 루프 방지**: 최대 10회 반복으로 안정성 보장

@@ -106,10 +106,90 @@ def get_kis_token():
 def get_stock_name(stock_code):
     """KIS API를 사용하여 주식 코드로 주식명을 조회합니다."""
     try:
+        # 주요 주식들의 매핑 테이블
+        stock_name_mapping = {
+            '005930': '삼성전자',
+            '000660': 'SK하이닉스',
+            '035420': 'NAVER',
+            '051910': 'LG화학',
+            '006400': '삼성SDI',
+            '207940': '삼성바이오로직스',
+            '068270': '셀트리온',
+            '323410': '카카오',
+            '035720': '카카오',
+            '051900': 'LG생활건강',
+            '035720': '카카오',
+            '051900': 'LG생활건강',
+            '373220': 'LG에너지솔루션',
+            '005380': '현대차',
+            '000270': '기아',
+            '006980': '우성사료',
+            '017670': 'SK텔레콤',
+            '015760': '한국전력',
+            '034020': '두산에너빌리티',
+            '010130': '고려아연',
+            '011070': 'LG이노텍',
+            '009150': '삼성전기',
+            '012330': '현대모비스',
+            '028260': '삼성물산',
+            '010950': 'S-Oil',
+            '018260': '삼성에스디에스',
+            '032830': '삼성생명',
+            '086790': '하나금융지주',
+            '055550': '신한지주',
+            '105560': 'KB금융',
+            '316140': '우리금융지주',
+            '138930': 'BNK금융지주',
+            '024110': '기업은행',
+            '004170': '신세계',
+            '023530': '롯데쇼핑',
+            '035250': '강원랜드',
+            '035420': 'NAVER',
+            '035720': '카카오',
+            '051910': 'LG화학',
+            '006400': '삼성SDI',
+            '207940': '삼성바이오로직스',
+            '068270': '셀트리온',
+            '323410': '카카오',
+            '035720': '카카오',
+            '051900': 'LG생활건강',
+            '373220': 'LG에너지솔루션',
+            '005380': '현대차',
+            '000270': '기아',
+            '006980': '우성사료',
+            '017670': 'SK텔레콤',
+            '015760': '한국전력',
+            '034020': '두산에너빌리티',
+            '010130': '고려아연',
+            '011070': 'LG이노텍',
+            '009150': '삼성전기',
+            '012330': '현대모비스',
+            '028260': '삼성물산',
+            '010950': 'S-Oil',
+            '018260': '삼성에스디에스',
+            '032830': '삼성생명',
+            '086790': '하나금융지주',
+            '055550': '신한지주',
+            '105560': 'KB금융',
+            '316140': '우리금융지주',
+            '138930': 'BNK금융지주',
+            '024110': '기업은행',
+            '004170': '신세계',
+            '023530': '롯데쇼핑',
+            '035250': '강원랜드'
+        }
+        
+        # 매핑 테이블에서 주식명 찾기
+        if stock_code in stock_name_mapping:
+            stock_name = stock_name_mapping[stock_code]
+            logger.info(f"주식명 조회 성공 (매핑 테이블): {stock_code} -> {stock_name}")
+            return stock_name
+        
+        # 매핑 테이블에 없는 경우 KIS API 시도
         token = get_kis_token()
         if not token:
             logger.warning("Failed to get KIS token for stock name lookup")
-            return None
+            raise Exception("KIS API 토큰을 가져올 수 없습니다.")
         
         # 주식명 검색 API 사용
         url = f"{API_CONFIG['KIS']['BASE_URL']}/uapi/domestic-stock/v1/quotations/inquire-price"
@@ -139,47 +219,29 @@ def get_stock_name(stock_code):
                 )
                 
                 if stock_name and stock_name not in ['전기·전자', 'IT 서비스', '화학', '의약품', '자동차', '철강금속']:  # 업종명이 아닌 경우만
-                    logger.info(f"주식명 조회 성공: {stock_code} -> {stock_name}")
+                    logger.info(f"주식명 조회 성공 (KIS API): {stock_code} -> {stock_name}")
                     return stock_name
                 else:
-                    # 주식명을 찾을 수 없는 경우 더미 데이터 사용
-                    dummy_names = {
-                        '005930': '삼성전자',
-                        '000660': 'SK하이닉스',
-                        '035420': 'NAVER',
-                        '051910': 'LG화학',
-                        '006400': '삼성SDI',
-                        '207940': '삼성바이오로직스',
-                        '068270': '셀트리온',
-                        '323410': '카카오',
-                        '035720': '카카오',
-                        '051900': 'LG생활건강'
-                    }
-                    
-                    if stock_code in dummy_names:
-                        logger.info(f"더미 주식명 사용: {stock_code} -> {dummy_names[stock_code]}")
-                        return dummy_names[stock_code]
-                    else:
-                        logger.warning(f"주식명을 찾을 수 없음: {stock_code}")
-                        return None
+                    logger.warning(f"주식명을 찾을 수 없음: {stock_code}")
+                    return None
             else:
                 logger.error(f"KIS API error for stock name: {data.get('msg1')}")
-                return None
+                raise Exception(f"KIS API 오류: {data.get('msg1')}")
         else:
             logger.error(f"KIS API request failed for stock name: {response.status_code}")
-            return None
+            raise Exception(f"KIS API 요청 실패: {response.status_code}")
             
     except Exception as e:
         logger.error(f"Error fetching stock name: {e}")
-        return None
+        raise Exception(f"주식명 조회 실패: {e}")
 
 def get_real_stock_price(stock_code):
     """실제 KIS API를 사용하여 주식 가격을 조회합니다."""
     try:
         token = get_kis_token()
         if not token:
-            logger.warning("Failed to get KIS token, using dummy data")
-            return get_stock_price(stock_code)
+            logger.warning("Failed to get KIS token")
+            raise Exception("KIS API 토큰을 가져올 수 없습니다.")
         
         url = f"{API_CONFIG['KIS']['BASE_URL']}/uapi/domestic-stock/v1/quotations/inquire-price"
         headers = {
@@ -230,14 +292,14 @@ def get_real_stock_price(stock_code):
                     return f"[{current_time}] {name_display} 현재 주가는 : '{price}원' 입니다. (전일대비 {change}원, {change_rate}%)"
             else:
                 logger.error(f"KIS API error: {data.get('msg1')}")
-                return get_stock_price(stock_code)  # 더미 데이터로 폴백
+                raise Exception(f"KIS API 오류: {data.get('msg1')}")
         else:
             logger.error(f"KIS API request failed: {response.status_code}")
-            return get_stock_price(stock_code)  # 더미 데이터로 폴백
+            raise Exception(f"KIS API 요청 실패: {response.status_code}")
             
     except Exception as e:
         logger.error(f"Error fetching real stock price: {e}")
-        return get_stock_price(stock_code)  # 더미 데이터로 폴백
+        raise Exception(f"주식 가격 조회 실패: {e}")
 
 # 증권사 리포트 조회 Tool
 def get_stock_reports(stock_code):
