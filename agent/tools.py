@@ -330,35 +330,174 @@ def get_real_stock_price(stock_code):
 def get_stock_reports(stock_code):
     """증권사 리포트를 조회합니다."""
     try:
-        logger.info(f"Fetching report for stock: {stock_code}")
-        # Dummy Code : X-API 
-        reports = [
-            "Buy, 목표가 80,000원",
-            "Hold, 목표가 75,000원", 
-            "Strong Buy, 목표가 85,000원"
-        ]
-        report = random.choice(reports)
-        return f"{stock_code} 관련 증권사 리포트: '{report}' 입니다."
+        logger.info(f"📊 증권사 리포트 조회 시작: {stock_code}")
+        
+        # 주식명 조회
+        stock_name = get_stock_name(stock_code)
+        stock_display = f"{stock_name}({stock_code})" if stock_name else stock_code
+        
+        # OpenAI API 키 확인
+        if API_CONFIG['OPENAI']['ACCESS_KEY'] == "your openai accesskey":
+            logger.warning("⚠️ OpenAI API 키가 설정되지 않음 - 더미 리포트 사용")
+            # 더미 리포트 반환
+            reports = [
+                "Buy, 목표가 80,000원",
+                "Hold, 목표가 75,000원", 
+                "Strong Buy, 목표가 85,000원",
+                "Outperform, 목표가 82,000원"
+            ]
+            report = random.choice(reports)
+            return f"{stock_display} 관련 증권사 리포트: '{report}' 입니다."
+        
+        # OpenAI API를 사용한 리포트 생성
+        try:
+            from langchain_openai import ChatOpenAI
+            
+            llm = ChatOpenAI(
+                model=API_CONFIG['OPENAI']['MODEL_NAME'],
+                temperature=0.6,
+                openai_api_key=API_CONFIG['OPENAI']['ACCESS_KEY']
+            )
+            
+            # 증권사 리포트 생성 프롬프트
+            prompt = f"""
+            다음 주식에 대한 증권사 리포트를 생성해주세요:
+            
+            주식: {stock_display}
+            
+            다음 조건을 만족하는 리포트를 생성해주세요:
+            1. 투자의견 (Buy, Hold, Sell, Strong Buy, Outperform 중 하나)
+            2. 목표가 (현실적인 주가 범위)
+            3. 간단한 투자 근거
+            
+            예시 형식:
+            - "Buy, 목표가 85,000원 (기술 혁신으로 성장 기대)"
+            - "Hold, 목표가 75,000원 (안정적 성장세 유지)"
+            - "Strong Buy, 목표가 90,000원 (신제품 출시로 실적 개선)"
+            - "Outperform, 목표가 82,000원 (해외 시장 진출 확대)"
+            
+            리포트 내용만 간단히 답변해주세요.
+            """
+            
+            logger.info(f"🤖 OpenAI에 리포트 생성 요청: {stock_display}")
+            response = llm.invoke(prompt)
+            report_content = response.content.strip()
+            
+            # 응답 정리 (따옴표 제거 등)
+            report_content = report_content.replace('"', '').replace("'", "").strip()
+            
+            logger.info(f"✅ 리포트 생성 완료: {report_content}")
+            
+            return f"{stock_display} 관련 증권사 리포트: '{report_content}' 입니다."
+            
+        except Exception as openai_error:
+            logger.error(f"❌ OpenAI API 오류: {openai_error}")
+            logger.info("🔄 더미 리포트로 대체")
+            
+            # OpenAI 오류 시 더미 리포트 반환
+            reports = [
+                "Buy, 목표가 80,000원",
+                "Hold, 목표가 75,000원", 
+                "Strong Buy, 목표가 85,000원",
+                "Outperform, 목표가 82,000원"
+            ]
+            report = random.choice(reports)
+            return f"{stock_display} 관련 증권사 리포트: '{report}' 입니다."
+            
     except Exception as e:
-        logger.error(f"Error fetching report: {e}")
+        logger.error(f"💥 증권사 리포트 조회 중 오류: {e}")
         return f"{stock_code} 리포트 조회 중 오류가 발생했습니다."
 
 # 뉴스 조회 Tool
 def get_stock_news(stock_code):
     """주식 관련 뉴스를 조회합니다."""
     try:
-        logger.info(f"Fetching news for stock: {stock_code}")
-        # Dummy Code : Crawling
-        news_list = [
-            "시장 점유율 확대 중",
-            "신제품 출시 발표",
-            "분기 실적 호조",
-            "해외 진출 확대"
-        ]
-        news = random.choice(news_list)
-        return f"{stock_code} 관련 최신 뉴스: '{news}' 입니다."
+        logger.info(f"📰 주식 뉴스 조회 시작: {stock_code}")
+        
+        # 주식명 조회
+        stock_name = get_stock_name(stock_code)
+        stock_display = f"{stock_name}({stock_code})" if stock_name else stock_code
+        
+        # OpenAI API 키 확인
+        if API_CONFIG['OPENAI']['ACCESS_KEY'] == "your openai accesskey":
+            logger.warning("⚠️ OpenAI API 키가 설정되지 않음 - 더미 뉴스 사용")
+            # 더미 뉴스 반환
+            news_list = [
+                "시장 점유율 확대 중",
+                "신제품 출시 발표",
+                "분기 실적 호조",
+                "해외 진출 확대",
+                "기술 혁신으로 경쟁력 강화",
+                "ESG 경영 강화",
+                "디지털 전환 가속화",
+                "글로벌 시장 진출 확대"
+            ]
+            news = random.choice(news_list)
+            return f"{stock_display} 관련 최신 뉴스: '{news}' 입니다."
+        
+        # OpenAI API를 사용한 뉴스 생성
+        try:
+            from langchain_openai import ChatOpenAI
+            
+            llm = ChatOpenAI(
+                model=API_CONFIG['OPENAI']['MODEL_NAME'],
+                temperature=0.7,
+                openai_api_key=API_CONFIG['OPENAI']['ACCESS_KEY']
+            )
+            
+            # 주식 관련 뉴스 생성 프롬프트
+            prompt = f"""
+            다음 주식에 대한 최신 뉴스를 생성해주세요:
+            
+            주식: {stock_display}
+            
+            다음 조건을 만족하는 뉴스를 생성해주세요:
+            1. 해당 기업의 최근 동향이나 성과를 반영
+            2. 투자자들이 관심을 가질 만한 내용
+            3. 간결하고 명확한 문장
+            4. 긍정적이거나 중립적인 톤
+            5. 20자 이내의 짧은 뉴스
+            
+            예시 형식:
+            - "신제품 출시로 매출 성장 기대"
+            - "해외 시장 진출 확대로 실적 개선"
+            - "기술 혁신으로 경쟁력 강화"
+            - "ESG 경영 강화로 브랜드 가치 상승"
+            
+            뉴스 내용만 간단히 답변해주세요.
+            """
+            
+            logger.info(f"🤖 OpenAI에 뉴스 생성 요청: {stock_display}")
+            response = llm.invoke(prompt)
+            news_content = response.content.strip()
+            
+            # 응답 정리 (따옴표 제거 등)
+            news_content = news_content.replace('"', '').replace("'", "").strip()
+            
+            logger.info(f"✅ 뉴스 생성 완료: {news_content}")
+            
+            return f"{stock_display} 관련 최신 뉴스: '{news_content}' 입니다."
+            
+        except Exception as openai_error:
+            logger.error(f"❌ OpenAI API 오류: {openai_error}")
+            logger.info("🔄 더미 뉴스로 대체")
+            
+            # OpenAI 오류 시 더미 뉴스 반환
+            news_list = [
+                "시장 점유율 확대 중",
+                "신제품 출시 발표",
+                "분기 실적 호조",
+                "해외 진출 확대",
+                "기술 혁신으로 경쟁력 강화",
+                "ESG 경영 강화",
+                "디지털 전환 가속화",
+                "글로벌 시장 진출 확대"
+            ]
+            news = random.choice(news_list)
+            return f"{stock_display} 관련 최신 뉴스: '{news}' 입니다."
+            
     except Exception as e:
-        logger.error(f"Error fetching news: {e}")
+        logger.error(f"💥 주식 뉴스 조회 중 오류: {e}")
         return f"{stock_code} 뉴스 조회 중 오류가 발생했습니다."
 
 # 현재 주식 가격 조회 Tool (더미 데이터)

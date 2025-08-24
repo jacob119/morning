@@ -22,7 +22,7 @@ import time
 from ui.web_components import (
     create_stock_metrics, create_stock_chart, create_volume_chart,
     create_analysis_history, create_portfolio_summary, display_analysis_result,
-    create_sidebar_config
+    create_sidebar_config, PORTFOLIO_STOCKS
 )
 
 # Streamlit 캐싱 설정
@@ -104,6 +104,12 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 실시간 분석", "📈 차트", 
 with tab1:
     st.header("📊 실시간 주식 분석")
     
+    # 현재 선택된 주식 정보 표시
+    if stock_code in PORTFOLIO_STOCKS:
+        st.info(f"**분석 대상: {PORTFOLIO_STOCKS[stock_code]}({stock_code})**")
+    else:
+        st.info(f"**분석 대상: {stock_code}**")
+    
     # 안전한 주식 메트릭 카드 생성
     try:
         create_stock_metrics(stock_code)
@@ -114,14 +120,14 @@ with tab1:
     # 분석 실행
     if st.session_state.get('run_analysis', False):
         try:
-            with st.spinner("주식 분석 중..."):
+            with st.spinner(f"{stock_code} 주식 분석 중..."):
                 # 분석 실행
                 analyzer = StockAnalyzer()
                 analyzer.max_iterations = max_iterations
                 result = analyzer.analyze(stock_code)
                 
                 # 결과 표시
-                st.success("✅ 분석 완료!")
+                st.success(f"✅ {stock_code} 분석 완료!")
                 
                 # 분석 결과를 세션에 저장
                 st.session_state.analysis_result = result
@@ -139,8 +145,14 @@ with tab1:
             st.session_state.run_analysis = False
     
     # 분석 결과 표시
-    if hasattr(st.session_state, 'analysis_result'):
-        display_analysis_result(st.session_state.analysis_result)
+    if hasattr(st.session_state, 'analysis_result') and st.session_state.analysis_result:
+        # 현재 주식 코드와 분석 결과의 주식 코드가 일치하는지 확인
+        if hasattr(st.session_state.analysis_result, 'stock_code') and st.session_state.analysis_result.stock_code == stock_code:
+            display_analysis_result(st.session_state.analysis_result)
+        else:
+            st.info("다른 주식의 분석 결과입니다. 새로운 분석을 실행해주세요.")
+    else:
+        st.info("분석 결과가 없습니다. '분석 시작' 버튼을 클릭하거나 주식을 선택해주세요.")
 
 with tab2:
     st.header("📈 주식 차트")

@@ -18,6 +18,44 @@ except ImportError as e:
     st.info("시스템을 재시작해주세요.")
     st.stop()
 
+# 주요 보유 주식 목록
+PORTFOLIO_STOCKS = {
+    '005930': '삼성전자',
+    '000660': 'SK하이닉스', 
+    '035420': 'NAVER',
+    '051910': 'LG화학',
+    '006400': '삼성SDI',
+    '207940': '삼성바이오로직스',
+    '068270': '셀트리온',
+    '323410': '카카오',
+    '035720': '카카오',
+    '051900': 'LG생활건강',
+    '373220': 'LG에너지솔루션',
+    '005380': '현대차',
+    '000270': '기아',
+    '006980': '우성사료',
+    '017670': 'SK텔레콤',
+    '015760': '한국전력',
+    '034020': '두산에너빌리티',
+    '010130': '고려아연',
+    '011070': 'LG이노텍',
+    '009150': '삼성전기',
+    '012330': '현대모비스',
+    '028260': '삼성물산',
+    '010950': 'S-Oil',
+    '018260': '삼성에스디에스',
+    '032830': '삼성생명',
+    '086790': '하나금융지주',
+    '055550': '신한지주',
+    '105560': 'KB금융',
+    '316140': '우리금융지주',
+    '138930': 'BNK금융지주',
+    '024110': '기업은행',
+    '004170': '신세계',
+    '023530': '롯데쇼핑',
+    '035250': '강원랜드'
+}
+
 def create_stock_metrics(stock_code: str):
     """주식 메트릭 카드를 생성합니다."""
     try:
@@ -227,26 +265,28 @@ def create_analysis_history():
 
 def create_portfolio_summary():
     """포트폴리오 요약을 생성합니다."""
-    portfolio = [
-        {
-            "종목코드": "005930",
-            "종목명": "삼성전자",
-            "보유수량": "100주",
-            "평균단가": "70,000원",
-            "현재가": "72,000원",
-            "수익률": "+2.86%",
-            "평가손익": "+200,000원"
-        },
-        {
-            "종목코드": "000660",
-            "종목명": "SK하이닉스",
-            "보유수량": "50주",
-            "평균단가": "120,000원",
-            "현재가": "125,000원",
-            "수익률": "+4.17%",
-            "평가손익": "+250,000원"
-        }
-    ]
+    portfolio = []
+    
+    # 주요 주식들을 포트폴리오에 추가
+    for stock_code, stock_name in PORTFOLIO_STOCKS.items():
+        # 랜덤한 보유 수량과 평균 단가 생성
+        quantity = random.randint(10, 200)
+        avg_price = random.randint(50000, 300000)
+        current_price = avg_price + random.randint(-20000, 20000)
+        
+        # 수익률 계산
+        profit_rate = ((current_price - avg_price) / avg_price) * 100
+        profit_amount = (current_price - avg_price) * quantity
+        
+        portfolio.append({
+            "종목코드": stock_code,
+            "종목명": stock_name,
+            "보유수량": f"{quantity}주",
+            "평균단가": f"{avg_price:,}원",
+            "현재가": f"{current_price:,}원",
+            "수익률": f"{profit_rate:+.2f}%",
+            "평가손익": f"{profit_amount:+,}원"
+        })
     
     return pd.DataFrame(portfolio)
 
@@ -305,16 +345,66 @@ def create_sidebar_config():
     with st.sidebar:
         st.title("⚙️ 설정")
         
-        # 주식 코드 입력 (세션 상태에서 기본값 가져오기)
-        default_stock_code = st.session_state.get('stock_code', '005930')
+        # 보유 주식 목록 선택
+        st.subheader("📋 보유 주식 목록")
+        stock_options = {f"{name}({code})": code for code, name in PORTFOLIO_STOCKS.items()}
+        
+        # 현재 선택된 주식 코드
+        current_stock_code = st.session_state.get('stock_code', '005930')
+        
+        # 현재 주식 코드에 해당하는 인덱스 찾기
+        current_index = 0
+        for i, (display_name, code) in enumerate(stock_options.items()):
+            if code == current_stock_code:
+                current_index = i
+                break
+        
+        # 드롭다운에서 주식 선택
+        selected_stock = st.selectbox(
+            "주식 선택",
+            options=list(stock_options.keys()),
+            index=current_index,
+            key="stock_selector",
+            help="분석할 주식을 선택하세요"
+        )
+        
+        # 선택된 주식 코드 추출
+        selected_code = stock_options[selected_stock]
+        
+        # 주식 코드 입력 (선택된 주식 코드로 설정)
         stock_code = st.text_input(
-            "주식 코드",
-            value=default_stock_code,
-            help="분석할 주식 코드를 입력하세요 (예: 005930)"
+            "주식 코드 (직접 입력)",
+            value=selected_code,
+            key="stock_code_input",
+            help="분석할 주식 코드를 직접 입력하세요 (예: 005930)"
         )
         
         # 주식 코드를 세션 상태에 저장
         st.session_state.stock_code = stock_code
+        
+        # 주식 선택이 변경되었는지 확인하고 자동 분석 실행
+        if 'last_selected_code' not in st.session_state:
+            st.session_state.last_selected_code = selected_code
+        
+        # 선택된 주식이 변경되었으면 자동 분석 실행
+        if st.session_state.last_selected_code != selected_code:
+            st.session_state.stock_code = selected_code
+            st.session_state.last_selected_code = selected_code
+            st.session_state.run_analysis = True
+            st.session_state.analysis_result = None
+            st.success(f"🔄 {selected_code} 주식 분석을 시작합니다...")
+            st.rerun()  # 페이지 재실행으로 즉시 반영
+        
+        # 텍스트 박스에서 직접 입력한 경우
+        if 'last_input_code' not in st.session_state:
+            st.session_state.last_input_code = stock_code
+        
+        if st.session_state.last_input_code != stock_code:
+            st.session_state.run_analysis = True
+            st.session_state.analysis_result = None
+            st.session_state.last_input_code = stock_code
+            st.success(f"🔄 {stock_code} 주식 분석을 시작합니다...")
+            st.rerun()  # 페이지 재실행으로 즉시 반영
         
         # 분석 옵션
         st.subheader("📊 분석 옵션")
@@ -328,9 +418,16 @@ def create_sidebar_config():
         # 분석 실행 버튼
         if st.button("🚀 분석 시작", type="primary"):
             st.session_state.run_analysis = True
+            st.session_state.analysis_result = None
         else:
-            # 세션 상태 초기화 방지
             if 'run_analysis' not in st.session_state:
                 st.session_state.run_analysis = False
+        
+        # 현재 선택된 주식 정보 표시
+        st.subheader("📋 현재 선택된 주식")
+        if stock_code in PORTFOLIO_STOCKS:
+            st.info(f"**{PORTFOLIO_STOCKS[stock_code]}({stock_code})**")
+        else:
+            st.info(f"**{stock_code}**")
         
         return stock_code, max_iterations, chart_days

@@ -71,35 +71,73 @@ class StockAnalyzer:
         """다음 액션을 결정합니다."""
         try:
             context = "\n".join(state.info_log[-5:])  # 최근 5개만 사용
-            prompt = f"""
-            현재 주식 코드: {state.stock_code}
-            지금까지 수집한 정보:
-            {context}
-
-            다음 중 무엇을 하시겠습니까? 
-            1. 뉴스 조회 (fetch_news)
-            2. 리포트 조회 (fetch_report)
-            3. 현재 가격 조회 (fetch_price)
-            4. 충분하니 종료 (end)
-
-            'fetch_news', 'fetch_report', 'fetch_price', 'end' 중 하나만 선택해서 답변하세요
-            """
+            iteration_count = len([log for log in state.info_log if log.startswith("LLM 결정:")])
             
-            logger.debug(f"Sending prompt to LLM for stock {state.stock_code}")
+            # 최소 2번의 액션을 실행하도록 강제
+            if iteration_count < 2:
+                # 아직 2번 미만이면 가격 조회 후 뉴스나 리포트 중 하나 선택
+                if iteration_count == 0:
+                    return "fetch_price"
+                elif iteration_count == 1:
+                    # 가격 조회 후에는 뉴스나 리포트 중 선택
+                    prompt = f"""
+                    현재 주식 코드: {state.stock_code}
+                    지금까지 수집한 정보:
+                    {context}
+
+                    가격 정보를 확인했습니다. 이제 다음 중 무엇을 더 조회하시겠습니까?
+                    1. 뉴스 조회 (fetch_news) - 최신 기업 뉴스
+                    2. 리포트 조회 (fetch_report) - 증권사 투자의견
+                    3. 종료 (end) - 충분한 정보 수집 완료
+
+                    'fetch_news', 'fetch_report', 'end' 중 하나만 선택해서 답변하세요.
+                    """
+                else:
+                    # 2번째 이후에는 모든 옵션 제공
+                    prompt = f"""
+                    현재 주식 코드: {state.stock_code}
+                    지금까지 수집한 정보:
+                    {context}
+
+                    다음 중 무엇을 하시겠습니까? 
+                    1. 뉴스 조회 (fetch_news) - 최신 기업 뉴스
+                    2. 리포트 조회 (fetch_report) - 증권사 투자의견
+                    3. 현재 가격 재조회 (fetch_price) - 최신 가격 정보
+                    4. 충분하니 종료 (end) - 분석 완료
+
+                    'fetch_news', 'fetch_report', 'fetch_price', 'end' 중 하나만 선택해서 답변하세요.
+                    """
+            else:
+                # 2번 이상 실행 후에는 모든 옵션 제공
+                prompt = f"""
+                현재 주식 코드: {state.stock_code}
+                지금까지 수집한 정보:
+                {context}
+
+                다음 중 무엇을 하시겠습니까? 
+                1. 뉴스 조회 (fetch_news) - 최신 기업 뉴스
+                2. 리포트 조회 (fetch_report) - 증권사 투자의견
+                3. 현재 가격 재조회 (fetch_price) - 최신 가격 정보
+                4. 충분하니 종료 (end) - 분석 완료
+
+                'fetch_news', 'fetch_report', 'fetch_price', 'end' 중 하나만 선택해서 답변하세요.
+                """
+            
+            logger.debug(f"Sending prompt to LLM for stock {state.stock_code} (iteration {iteration_count})")
             response = self.llm.invoke(prompt)
             decision = response.content.strip().lower()
             
             # 유효하지 않은 응답 처리
             if decision not in ["fetch_news", "fetch_report", "fetch_price", "end"]:
-                logger.warning(f"Invalid decision: {decision}, defaulting to 'end'")
-                decision = "end"
+                logger.warning(f"Invalid decision: {decision}, defaulting to 'fetch_news'")
+                decision = "fetch_news"
                 
             logger.info(f"LLM decision: {decision}")
             return decision
             
         except Exception as e:
             logger.error(f"Error in decide_next_action: {e}")
-            return "end"
+            return "fetch_news"  # 오류 시 뉴스 조회로 기본 설정
     
     def execute_action(self, action: str, stock_code: str) -> str:
         """액션을 실행합니다."""
