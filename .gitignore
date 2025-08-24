@@ -99,3 +99,4 @@ Desktop.ini
 # Auth
 config/KIS*config/setting.py
 .env
+config/kis_token_cache.json

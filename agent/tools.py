@@ -1,13 +1,71 @@
 import requests
 import random
+import json
+import os
+import time
+from datetime import datetime, timedelta
 from utils.logger import get_logger
 from config.setting import AUTH_CONFIG, API_CONFIG
 
 logger = get_logger(__name__)
 
-def get_kis_token():
-    """KIS API 토큰을 발급받습니다."""
+# 토큰 캐시 파일 경로
+TOKEN_CACHE_FILE = "config/kis_token_cache.json"
+
+def load_token_cache():
+    """캐시된 토큰을 로드합니다."""
     try:
+        if os.path.exists(TOKEN_CACHE_FILE):
+            with open(TOKEN_CACHE_FILE, 'r', encoding='utf-8') as f:
+                cache_data = json.load(f)
+                
+            # 토큰 만료 시간 확인
+            expires_at = datetime.fromisoformat(cache_data['expires_at'])
+            if datetime.now() < expires_at:
+                logger.info("캐시된 KIS 토큰 사용")
+                return cache_data['access_token']
+            else:
+                logger.info("캐시된 KIS 토큰 만료됨")
+                return None
+    except Exception as e:
+        logger.error(f"토큰 캐시 로드 실패: {e}")
+    return None
+
+def save_token_cache(access_token, expires_in=86400):
+    """토큰을 캐시에 저장합니다."""
+    try:
+        # 캐시 디렉토리 생성
+        os.makedirs(os.path.dirname(TOKEN_CACHE_FILE), exist_ok=True)
+        
+        # 만료 시간 계산 (현재 시간 + expires_in 초)
+        expires_at = datetime.now() + timedelta(seconds=expires_in)
+        
+        cache_data = {
+            'access_token': access_token,
+            'expires_at': expires_at.isoformat(),
+            'cached_at': datetime.now().isoformat()
+        }
+        
+        with open(TOKEN_CACHE_FILE, 'w', encoding='utf-8') as f:
+            json.dump(cache_data, f, ensure_ascii=False, indent=2)
+            
+        logger.info(f"KIS 토큰 캐시 저장 완료 (만료: {expires_at})")
+        return True
+    except Exception as e:
+        logger.error(f"토큰 캐시 저장 실패: {e}")
+        return False
+
+def get_kis_token():
+    """KIS API 토큰을 발급받거나 캐시에서 로드합니다."""
+    try:
+        # 먼저 캐시에서 토큰 확인
+        cached_token = load_token_cache()
+        if cached_token:
+            return cached_token
+        
+        # 캐시에 없거나 만료된 경우 새로 발급
+        logger.info("새로운 KIS 토큰 발급 요청")
+        
         url = f"{API_CONFIG['KIS']['BASE_URL']}/oauth2/tokenP"
         headers = {
             "content-type": "application/json"
@@ -18,12 +76,28 @@ def get_kis_token():
             "appsecret": AUTH_CONFIG["APP_SECRET"]
         }
         
-        response = requests.post(url, headers=headers, data=str(body))
+        logger.info(f"KIS 토큰 요청 URL: {url}")
+        logger.info(f"KIS APP_KEY: {AUTH_CONFIG['APP_KEY'][:20]}...")
+        logger.info(f"KIS APP_SECRET: {AUTH_CONFIG['APP_SECRET'][:20]}...")
+        
+        # JSON 형식으로 요청
+        response = requests.post(url, headers=headers, data=json.dumps(body))
+        logger.info(f"KIS 토큰 응답 상태: {response.status_code}")
+        
         if response.status_code == 200:
             token_data = response.json()
-            return token_data.get('access_token')
+            logger.info(f"KIS 토큰 발급 성공")
+            
+            access_token = token_data.get('access_token')
+            expires_in = token_data.get('expires_in', 86400)
+            
+            # 토큰을 캐시에 저장
+            save_token_cache(access_token, expires_in)
+            
+            return access_token
         else:
             logger.error(f"KIS token request failed: {response.status_code}")
+            logger.error(f"KIS token response: {response.text}")
             return None
     except Exception as e:
         logger.error(f"Error getting KIS token: {e}")
@@ -59,7 +133,16 @@ def get_real_stock_price(stock_code):
                 change = output.get('prdy_vrss', '0')  # 전일대비
                 change_rate = output.get('prdy_ctrt', '0')  # 전일대비등락율
                 
-                return f"{stock_code} 현재 주가는 : '{int(price):,}원' 입니다. (전일대비 {change:+,}원, {change_rate:+.2f}%)"
+                # 문자열을 정수로 변환
+                try:
+                    price_int = int(price)
+                    change_int = int(change)
+                    change_rate_float = float(change_rate)
+                    
+                    return f"{stock_code} 현재 주가는 : '{price_int:,}원' 입니다. (전일대비 {change_int:+,}원, {change_rate_float:+.2f}%)"
+                except (ValueError, TypeError):
+                    # 변환 실패 시 기본 형식으로 반환
+                    return f"{stock_code} 현재 주가는 : '{price}원' 입니다. (전일대비 {change}원, {change_rate}%)"
             else:
                 logger.error(f"KIS API error: {data.get('msg1')}")
                 return get_stock_price(stock_code)  # 더미 데이터로 폴백
