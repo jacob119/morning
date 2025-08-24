@@ -35,11 +35,20 @@ def get_llm():
         else:
             logger.info("Using OpenAI ChatGPT")
             from langchain_openai import ChatOpenAI
-            return ChatOpenAI(
+            llm = ChatOpenAI(
                 model=API_CONFIG['OPENAI']['MODEL_NAME'],
                 temperature=API_CONFIG['OPENAI']['TEMPERATURE'],
                 openai_api_key=API_CONFIG['OPENAI']['ACCESS_KEY']
             )
+            # 간단한 테스트로 API 키 유효성 확인
+            try:
+                test_response = llm.invoke("Hello")
+                logger.info("OpenAI API test successful")
+                return llm
+            except Exception as api_error:
+                logger.error(f"OpenAI API test failed: {api_error}")
+                logger.info("Falling back to DummyLLM due to API error")
+                return DummyLLM()
     except Exception as e:
         logger.error(f"Error initializing LLM: {e}")
         logger.info("Falling back to DummyLLM")

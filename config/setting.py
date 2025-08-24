@@ -22,6 +22,9 @@ AUTH_CONFIG = {
     "APP_SECRET": os.getenv("KIS_APP_SECRET", "your_kis_app_secret"),
     "ACCOUNT_NO": os.getenv("KIS_ACCOUNT_NO", "your_account_no"),
     "OPTION_ACCOUNT_NO": os.getenv("KIS_OPTION_ACCOUNT_NO", "your_option_account_no"),
+    "KIS_AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "PROD_DIGIT": "01",
+    "DEV_DIGIT": "02"
 }
 
 # API 설정

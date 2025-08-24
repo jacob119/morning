@@ -98,3 +98,4 @@ Desktop.ini
 
 # Auth
 config/KIS*config/setting.py
+.env
