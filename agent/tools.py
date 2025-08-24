@@ -138,7 +138,7 @@ def get_stock_name(stock_code):
                     ''
                 )
                 
-                if stock_name and stock_name != '전기·전자':  # 업종명이 아닌 경우만
+                if stock_name and stock_name not in ['전기·전자', 'IT 서비스', '화학', '의약품', '자동차', '철강금속']:  # 업종명이 아닌 경우만
                     logger.info(f"주식명 조회 성공: {stock_code} -> {stock_name}")
                     return stock_name
                 else:
@@ -210,16 +210,24 @@ def get_real_stock_price(stock_code):
                     change_int = int(change)
                     change_rate_float = float(change_rate)
                     
+                    # 추가 정보 추출
+                    volume = output.get('acml_vol', '0')  # 거래량
+                    trade_amount = output.get('acml_tr_pbmn', '0')  # 거래대금
+                    
                     # 주식명 조회
                     stock_name_display = get_stock_name(stock_code)
                     name_display = f"{stock_name_display}({stock_code})" if stock_name_display else stock_code
                     
-                    return f"{name_display} 현재 주가는 : '{price_int:,}원' 입니다. (전일대비 {change_int:+,}원, {change_rate_float:+.2f}%)"
+                    # 현재 시간 추가
+                    current_time = datetime.now().strftime("%H:%M:%S")
+                    
+                    return f"[{current_time}] {name_display} 현재 주가는 : '{price_int:,}원' 입니다. (전일대비 {change_int:+,}원, {change_rate_float:+.2f}%) | 거래량: {int(volume):,}주"
                 except (ValueError, TypeError):
                     # 변환 실패 시 기본 형식으로 반환
                     stock_name_display = get_stock_name(stock_code)
                     name_display = f"{stock_name_display}({stock_code})" if stock_name_display else stock_code
-                    return f"{name_display} 현재 주가는 : '{price}원' 입니다. (전일대비 {change}원, {change_rate}%)"
+                    current_time = datetime.now().strftime("%H:%M:%S")
+                    return f"[{current_time}] {name_display} 현재 주가는 : '{price}원' 입니다. (전일대비 {change}원, {change_rate}%)"
             else:
                 logger.error(f"KIS API error: {data.get('msg1')}")
                 return get_stock_price(stock_code)  # 더미 데이터로 폴백
