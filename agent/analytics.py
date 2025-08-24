@@ -1,83 +1,151 @@
-from langchain_openai import ChatOpenAI
-from langgraph.graph import StateGraph
 from config.setting import API_CONFIG
 from pydantic import BaseModel
-from agent.core.workflows import TOOLS
+from agent.tools import TOOLS
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 
-llm = ChatOpenAI(
-    model=API_CONFIG['OPENAI']['MODEL_NAME'],
-    temperature=API_CONFIG['OPENAI']['TEMPERATURE'],
-    openai_api_key=API_CONFIG['OPENAI']['ACCESS_KEY']
-)
+# OpenAI API 키가 설정되지 않은 경우를 위한 더미 LLM
+class DummyLLM:
+    def __init__(self):
+        self.call_count = 0
+        self.actions = ["fetch_price", "fetch_news", "fetch_report", "end"]
+    
+    def invoke(self, prompt):
+        """더미 LLM 응답"""
+        class DummyResponse:
+            def __init__(self, content):
+                self.content = content
+        
+        # 호출 횟수에 따라 다른 응답 반환
+        action_index = min(self.call_count, len(self.actions) - 1)
+        action = self.actions[action_index]
+        self.call_count += 1
+        
+        logger.info(f"DummyLLM decision: {action} (call #{self.call_count})")
+        return DummyResponse(action)
+
+def get_llm():
+    """LLM 인스턴스를 반환합니다."""
+    try:
+        if API_CONFIG['OPENAI']['ACCESS_KEY'] == "your openai accesskey":
+            logger.info("Using DummyLLM (no API key configured)")
+            return DummyLLM()
+        else:
+            logger.info("Using OpenAI ChatGPT")
+            from langchain_openai import ChatOpenAI
+            return ChatOpenAI(
+                model=API_CONFIG['OPENAI']['MODEL_NAME'],
+                temperature=API_CONFIG['OPENAI']['TEMPERATURE'],
+                openai_api_key=API_CONFIG['OPENAI']['ACCESS_KEY']
+            )
+    except Exception as e:
+        logger.error(f"Error initializing LLM: {e}")
+        logger.info("Falling back to DummyLLM")
+        return DummyLLM()
 
 class StockState(BaseModel):
     stock_code: str 
     info_log: list[str] = []
     next_action: str = ""
 
-# Dispatcher
-def decide_next_action(state: StockState) -> StockState:
-    context = "\n".join(state.info_log)
-    prompt = f"""
-        현재 주식 코드: {state.stock_code}
-        지금까지 수집한 정보:
-        {context}
+class StockAnalyzer:
+    """주식 분석 에이전트"""
+    
+    def __init__(self):
+        self.llm = get_llm()
+        self.max_iterations = 10  # 무한 루프 방지
+        
+    def decide_next_action(self, state: StockState) -> str:
+        """다음 액션을 결정합니다."""
+        try:
+            context = "\n".join(state.info_log[-5:])  # 최근 5개만 사용
+            prompt = f"""
+            현재 주식 코드: {state.stock_code}
+            지금까지 수집한 정보:
+            {context}
 
-        다음 중 무엇을 하시겠습니까? 
-        1. 뉴스 조회 (fetch_news)
-        2. 리포트 조회 (fetch_report)
-        3. 현재 가격 조회 (fetch_price)
-        3. 충분하니 종료 (end)
+            다음 중 무엇을 하시겠습니까? 
+            1. 뉴스 조회 (fetch_news)
+            2. 리포트 조회 (fetch_report)
+            3. 현재 가격 조회 (fetch_price)
+            4. 충분하니 종료 (end)
 
-        'fetch_news', 'fetch_report', 'fetch_price', 'end' 중 하나만 선택해서 답변하세요
-    """
-    print(f"prompt : {prompt}")
-    response = llm.invoke(prompt)
-    print(f"GPT 결정: {response}")
-    decision = response.content.strip().lower()
-    if decision not in ["fetch_news", "fetch_report", "fetch_price", "end"]:
-        decision = "end"
-    state.next_action = decision
-    state.info_log.append(f"LLM 결정: {decision}")
-    return state
+            'fetch_news', 'fetch_report', 'fetch_price', 'end' 중 하나만 선택해서 답변하세요
+            """
+            
+            logger.debug(f"Sending prompt to LLM for stock {state.stock_code}")
+            response = self.llm.invoke(prompt)
+            decision = response.content.strip().lower()
+            
+            # 유효하지 않은 응답 처리
+            if decision not in ["fetch_news", "fetch_report", "fetch_price", "end"]:
+                logger.warning(f"Invalid decision: {decision}, defaulting to 'end'")
+                decision = "end"
+                
+            logger.info(f"LLM decision: {decision}")
+            return decision
+            
+        except Exception as e:
+            logger.error(f"Error in decide_next_action: {e}")
+            return "end"
+    
+    def execute_action(self, action: str, stock_code: str) -> str:
+        """액션을 실행합니다."""
+        try:
+            if action in TOOLS:
+                logger.info(f"Executing action: {action} for stock: {stock_code}")
+                result = TOOLS[action](stock_code)
+                return result
+            else:
+                error_msg = f"알 수 없는 액션: {action}"
+                logger.error(error_msg)
+                return error_msg
+        except Exception as e:
+            error_msg = f"액션 실행 중 오류: {e}"
+            logger.error(error_msg)
+            return error_msg
+    
+    def analyze(self, stock_code: str) -> StockState:
+        """주식을 분석합니다."""
+        logger.info(f"Starting analysis for stock: {stock_code}")
+        state = StockState(stock_code=stock_code)
+        iteration = 0
+        
+        try:
+            while iteration < self.max_iterations:
+                iteration += 1
+                logger.debug(f"Analysis iteration {iteration}/{self.max_iterations}")
+                
+                # 다음 액션 결정
+                action = self.decide_next_action(state)
+                state.next_action = action
+                state.info_log.append(f"LLM 결정: {action}")
+                
+                # 종료 조건
+                if action == "end":
+                    logger.info("Analysis completed by LLM decision")
+                    break
+                
+                # 액션 실행
+                result = self.execute_action(action, stock_code)
+                state.info_log.append(result)
+                
+            # 최종 결과 출력
+            logger.info("=== Analysis Results ===")
+            for log in state.info_log:
+                print(log)
+                logger.info(log)
+                
+        except Exception as e:
+            logger.error(f"Error during analysis: {e}")
+            state.info_log.append(f"분석 중 오류 발생: {e}")
+        
+        logger.info(f"Analysis completed for stock: {stock_code}")
+        return state
 
-def tool_wrapper(tool_func, state: StockState) -> StockState:
-    result = tool_func(state.stock_code)
-    state.info_log.append(result)
-    return state
-
-def end_node(state: StockState) -> StockState:
-    return state
-
-
-# Analytics workflow 
-# TODO Refactoring
-builder = StateGraph(StockState)
-builder.add_node("fetch_news", lambda s : tool_wrapper(TOOLS["fetch_news"], s))
-builder.add_node("fetch_report", lambda s : tool_wrapper(TOOLS["fetch_report"], s))
-builder.add_node("fetch_price", lambda s : tool_wrapper(TOOLS["fetch_price"], s))
-builder.add_node("decide", decide_next_action)
-builder.add_node("end", end_node)
-
-builder.add_conditional_edges(
-    "decide", 
-    lambda state: state.next_action or "end", 
-    {
-        "fetch_news" : "fetch_news",
-        "fetch_report": "fetch_report",
-        "fetch_price": "fetch_price",
-        "end" : "end"
-    })
-
-builder.add_edge("fetch_news", "decide")
-builder.add_edge("fetch_report", "decide")
-builder.add_edge("fetch_price", "decide")
-builder.set_entry_point("decide")
-
-graph = builder.compile()
-
-def run(stock_code):
-    initial_state = StockState(stock_code=stock_code)
-    result_state = graph.invoke(initial_state)
-    print(result_state)
+def run(stock_code: str) -> StockState:
+    """주식 분석을 실행합니다."""
+    analyzer = StockAnalyzer()
+    return analyzer.analyze(stock_code)
