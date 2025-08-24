@@ -69,6 +69,8 @@ morning/
 ├── app.py                        # 🚀 CLI 메인 실행 파일
 ├── dashboard.py                  # 🌐 웹 대시보드
 ├── web_components.py             # 🧩 웹 컴포넌트
+├── manage.py                     # ⚙️ 애플리케이션 관리 스크립트
+├── morning.sh                    # 🐚 쉘 관리 스크립트
 ├── .env.example                  # 📋 환경변수 템플릿
 ├── requirements.txt              # 📦 전체 의존성
 ├── requirements_simple.txt       # 📦 핵심 의존성만
@@ -108,6 +110,36 @@ python -c "from agent.analytics import run; run('000660')"
 ```
 
 #### 4-2. 웹 대시보드 실행
+
+##### 방법 1: 관리 스크립트 사용 (권장)
+```bash
+# 애플리케이션 시작
+python manage.py start
+# 또는
+./morning.sh start
+
+# 상태 확인
+python manage.py status
+# 또는
+./morning.sh status
+
+# 애플리케이션 중지
+python manage.py stop
+# 또는
+./morning.sh stop
+
+# 재시작
+python manage.py restart
+# 또는
+./morning.sh restart
+
+# 로그 확인
+python manage.py logs
+# 또는
+./morning.sh logs
+```
+
+##### 방법 2: 직접 실행
 ```bash
 # Streamlit 대시보드 실행
 streamlit run dashboard.py
@@ -150,6 +182,12 @@ $ python app.py
 - **포트폴리오 관리**: 보유 종목 및 수익률 시각화
 - **분석 기록**: 과거 분석 결과 및 통계
 - **설정 관리**: API 키 및 알림 설정
+
+#### ⚙️ 운영 관리
+- **자동 프로세스 관리**: 시작/중지/재시작/상태 확인
+- **로그 관리**: 실시간 로그 확인 및 정리
+- **PID 관리**: 프로세스 ID 자동 관리
+- **메모리/CPU 모니터링**: 시스템 리소스 사용량 추적
 
 #### ⚙️ 설정 관리
 - **환경변수**: `.env` 파일로 API 키 관리
