@@ -137,6 +137,15 @@ def start_slack_bot():
     try:
         logger.info("🚀 Slack Bot 시작 중...")
         
+        # 토큰 정보 출력
+        print("=" * 60)
+        print("🔑 Slack Bot 토큰 정보")
+        print("=" * 60)
+        print(f"SLACK_BOT_TOKEN: {SLACK_BOT_TOKEN}")
+        print(f"SLACK_APP_TOKEN: {SLACK_APP_TOKEN}")
+        print(f"SLACK_SIGNING_SECRET: {SLACK_SIGNING_SECRET}")
+        print("=" * 60)
+        
         if not SLACK_BOT_TOKEN or not SLACK_APP_TOKEN:
             logger.error("❌ Slack 토큰이 설정되지 않았습니다.")
             logger.info("💡 .env 파일에 SLACK_BOT_TOKEN과 SLACK_APP_TOKEN을 설정해주세요.")
