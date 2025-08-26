@@ -12,7 +12,10 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Slack 앱 초기화
-app = App(token=SLACK_BOT_TOKEN)
+app = App(
+    token=SLACK_BOT_TOKEN,
+    signing_secret=SLACK_SIGNING_SECRET
+)
 
 def get_portfolio_status():
     """보유 주식 현황을 조회하고 계산합니다."""
