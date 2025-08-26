@@ -52,3 +52,6 @@ xxhash==3.5.0
 zstandard==0.23.0
 streamlit==1.48.1
 plotly==6.3.0
+psutil==7.0.0
+beautifulsoup4==4.13.5
+pytest==8.4.1
