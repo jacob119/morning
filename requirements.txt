@@ -55,3 +55,5 @@ plotly==6.3.0
 psutil==7.0.0
 beautifulsoup4==4.13.5
 pytest==8.4.1
+slack-bolt==1.23.0
+python-dotenv==1.1.1
