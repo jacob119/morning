@@ -1,7 +1,7 @@
 import logging
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-from config.slack_config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN, PORTFOLIO_STOCKS, MESSAGE_TEMPLATES
+from config.slack_config import SLACK_BOT_TOKEN, SLACK_APP_TOKEN, SLACK_SIGNING_SECRET, PORTFOLIO_STOCKS, MESSAGE_TEMPLATES
 from agent.tools import get_real_stock_price
 import asyncio
 import threading
