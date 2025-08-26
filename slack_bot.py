@@ -239,7 +239,7 @@ def start_slack_bot():
         # 앱 초기화 확인
         logger.info("🔧 Slack 앱 초기화 확인 중...")
         logger.info(f"앱 토큰: {app.client.token}")
-        logger.info(f"앱 signing_secret: {app.signing_secret}")
+        logger.info(f"앱 signing_secret: {SLACK_SIGNING_SECRET}")
         
         # Socket Mode 핸들러로 봇 시작
         logger.info("🔌 Socket Mode 핸들러 생성 중...")
