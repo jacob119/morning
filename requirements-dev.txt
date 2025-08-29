@@ -1,0 +1,25 @@
+# 개발 도구 및 테스팅 의존성
+# 개발 환경에서만 설치하는 패키지들
+
+# 코드 포맷팅 및 린팅
+black==23.12.1
+isort==5.13.2
+flake8==7.0.0
+mypy==1.8.0
+
+# 테스팅
+pytest==8.0.0
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+pytest-asyncio==0.23.5
+
+# 코드 품질 분석
+radon==6.0.1
+coverage==7.4.1
+
+# 타입 체킹
+types-requests==2.31.0.20240106
+types-PyYAML==6.0.12.12
+
+# 개발 편의 도구
+pre-commit==3.6.0

@@ -22,7 +22,8 @@ import time
 from ui.web_components import (
     create_stock_metrics, create_stock_chart, create_volume_chart,
     create_analysis_history, create_portfolio_summary, display_analysis_result,
-    create_sidebar_config, PORTFOLIO_STOCKS
+    create_sidebar_config, create_news_analysis_tab, create_ai_chat_tab,
+    PORTFOLIO_STOCKS
 )
 
 # Streamlit 캐싱 설정
@@ -84,6 +85,12 @@ if 'run_analysis' not in st.session_state:
     st.session_state.run_analysis = False
 if 'analysis_result' not in st.session_state:
     st.session_state.analysis_result = None
+if 'news_analysis' not in st.session_state:
+    st.session_state.news_analysis = None
+if 'real_time_news' not in st.session_state:
+    st.session_state.real_time_news = None
+if 'chat_session_id' not in st.session_state:
+    st.session_state.chat_session_id = None
 
 # 안전한 사이드바 설정
 try:
@@ -99,7 +106,9 @@ except Exception as e:
 st.markdown('<h1 class="main-header">📈 Morning - 주식 분석 대시보드</h1>', unsafe_allow_html=True)
 
 # 탭 생성
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["📊 실시간 분석", "📈 차트", "💼 포트폴리오", "📋 분석 기록", "⚙️ 설정"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+    "📊 실시간 분석", "📈 차트", "💼 포트폴리오", "📰 뉴스 분석", "🤖 AI 상담", "📋 분석 기록", "⚙️ 설정"
+])
 
 with tab1:
     st.header("📊 실시간 주식 분석")
@@ -262,6 +271,14 @@ with tab3:
         st.plotly_chart(fig_bar, use_container_width=True)
 
 with tab4:
+    # 뉴스 분석 탭
+    create_news_analysis_tab()
+
+with tab5:
+    # AI 채팅 탭
+    create_ai_chat_tab()
+
+with tab6:
     st.header("📋 분석 기록")
     
     # 안전한 분석 기록 표시
@@ -286,7 +303,7 @@ with tab4:
     with col3:
         st.metric("평균 신뢰도", "81.2%")
 
-with tab5:
+with tab7:
     st.header("⚙️ 시스템 설정")
     
     col1, col2 = st.columns(2)
@@ -334,6 +351,39 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
+# 실시간 모니터링 설정
+st.sidebar.markdown("---")
+st.sidebar.subheader("🔄 실시간 모니터링")
+
+# 자동 새로고침 설정
+auto_refresh = st.sidebar.checkbox("자동 새로고침", value=False, key="auto_refresh")
+if auto_refresh:
+    refresh_interval = st.sidebar.selectbox(
+        "새로고침 간격",
+        ["30초", "1분", "5분", "10분"],
+        key="refresh_interval"
+    )
+    
+    # 간격을 초 단위로 변환
+    interval_map = {"30초": 30, "1분": 60, "5분": 300, "10분": 600}
+    refresh_seconds = interval_map[refresh_interval]
+    
+    # 자동 새로고침 실행
+    if 'last_refresh' not in st.session_state:
+        st.session_state.last_refresh = time.time()
+    
+    current_time = time.time()
+    if current_time - st.session_state.last_refresh >= refresh_seconds:
+        st.session_state.last_refresh = current_time
+        st.session_state.refresh_news = True
+        st.session_state.run_analysis = True
+        st.rerun()
+
+# 실시간 상태 표시
+if auto_refresh:
+    st.sidebar.success(f"🔄 {refresh_interval}마다 자동 새로고침")
+    st.sidebar.caption(f"마지막 업데이트: {datetime.now().strftime('%H:%M:%S')}")
 
 def main():
     """대시보드 메인 함수"""

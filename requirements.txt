@@ -57,3 +57,6 @@ beautifulsoup4==4.13.5
 pytest==8.4.1
 slack-bolt==1.23.0
 python-dotenv==1.1.1
+
+# 뉴스 분석 및 AI 채팅
+aiohttp==3.12.15

@@ -1,305 +1,352 @@
-# 📈 Morning
+# 🌅 Morning - AI 기반 주식 분석 및 트레이딩 시스템
 
-이 프로젝트는 한국투자증권(KIS; Korea Investment Securities) Open API를 Tool/Agent화하여 ChatGPT 기반 자동 주식 매매 애플리케이션입니다.
+## 📋 프로젝트 개요
 
-## 📌 주요 기능
-- ✅ KIS Open API를 통한 실시간 주식 정보 조회 및 거래 실행
-- 🧠 LLM 기반 프롬프트 시스템을 활용한 에이전트 의사결정
-- 📊 포트폴리오 평가 및 리포트 생성 기능
-- 🛠️ 모듈화된 구조로 확장성과 유지보수 용이
-- 🔧 환경변수 기반 설정 관리
-- 📝 구조화된 로깅 시스템
+Morning은 AI 기술을 활용한 지능형 주식 분석 및 자동 트레이딩 시스템입니다. 실시간 시장 데이터 분석, AI 기반 투자 의견 생성, 그리고 다양한 트레이딩 전략을 제공합니다.
 
-## 🚀 최근 개선사항
-- ✅ **Exa MCP 통합**: 실시간 회사 정보 기반 정확한 목표가 설정
-- ✅ 의존성 패키지 단순화 및 호환성 개선
-- ✅ 에러 핸들링 및 로깅 시스템 강화
-- ✅ 클래스 기반 분석 에이전트 구조
-- ✅ 환경변수 기반 설정 관리
-- ✅ 무한 루프 방지 및 안정성 향상
+## ⚠️ 중요: 가상환경 사용 필수
 
-## 🔍 Exa MCP 통합 기능
+**이 프로젝트는 반드시 가상환경(venv)에서 실행해야 합니다.** 시스템 Python을 직접 사용하면 의존성 충돌이나 권한 문제가 발생할 수 있습니다.
 
-### 📊 AI 기반 회사 정보 분석
-- **실시간 회사 정보 조회**: Exa MCP를 통한 최신 기업 데이터 수집
-- **산업별 분석**: 기술, 금융, 헬스케어 등 산업별 맞춤 분석
-- **성장 잠재력 평가**: 회사의 성장 가능성과 위험도 분석
-- **시장 규모 분류**: 대형주/중형주/소형주별 차별화된 분석
+## ✨ 주요 기능
 
-### 🎯 정확한 목표가 설정
-- **회사 정보 기반 계산**: 산업, 성장성, 시장 규모를 고려한 목표가 산정
-- **투자의견 자동 생성**: Buy, Hold, Sell, Strong Buy, Outperform 자동 결정
-- **투자 근거 생성**: 회사 특성에 맞는 구체적인 투자 근거 제공
-- **MCP 우선 리포트 생성**: OpenAI 대신 MCP를 우선적으로 사용하여 일관된 분석 제공
+### 🤖 AI 기반 분석
+- **실시간 주식 분석**: OpenAI를 활용한 지능형 주식 리포트 생성
+- **투자 의견 생성**: Buy/Sell/Hold 추천 및 목표가 설정
+- **뉴스 감정 분석**: 관련 뉴스 기반 시장 심리 분석
 
-### 🔧 설정 및 사용법
-```bash
-# MCP 서버 설정 (선택사항)
-MCP_EXA_SERVER_URL=https://server.smithery.ai/exa/mcp
-ENABLE_MCP=true
-MCP_TIMEOUT=30
-```
+### 📊 전략 엔진
+- **모듈화된 전략**: 모멘텀, Mean Reversion, Breakout 전략
+- **백테스팅**: 과거 데이터 기반 전략 성능 검증
+- **리스크 관리**: 포지션 제한, 손절/익절 규칙
 
-### 🧪 테스트
-```bash
-# 가상환경 활성화
-source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate   # Windows
+### 🔗 API 통합
+- **KIS API**: 한국투자증권 실시간 데이터 연동
+- **Slack Bot**: 포트폴리오 상태 실시간 알림
+- **웹 대시보드**: Streamlit 기반 시각화
 
-# Exa MCP 통합 기능 테스트
-python test/test_exa_integration.py
+## 🚀 빠른 시작
 
-# 기본 기능 테스트
-python test/test_stock_tools.py
-
-# 모든 테스트 실행
-python test/test_exa_integration.py && python test/test_stock_tools.py
-```
-
-
-### 1. 실행 환경 설정
-
-#### 1-1. Python 3.9+ (권장: 3.11.4)
-
-#### 1-2. 가상환경 생성 및 의존성 설치
+### 1. 환경 설정
 
 ```bash
-# 가상환경 생성
+# 저장소 클론
+git clone https://github.com/your-username/morning.git
+cd morning
+
+# 가상환경 생성 및 활성화 (필수!)
 python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
-# 가상환경 활성화
-source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate   # Windows
-
-# 의존성 설치 (핵심 패키지만)
-pip install -r requirements_simple.txt
-
-# 또는 전체 패키지 설치 (LangChain 포함)
+# 의존성 설치
 pip install -r requirements.txt
+pip install -r requirements-dev.txt  # 개발 도구 설치
 ```
 
-### 2. 프로젝트 구조
+### 2. 환경변수 설정
 
-```plaintext
-morning/
-├── agent/                        # 🤖 AI 에이전트 관련
-│   ├── analytics.py              # 🧠 주식 분석 에이전트 (StockAnalyzer)
-│   ├── tools.py                  # 🛠️ 분석 도구들 (가격, 뉴스, 리포트)
-│   ├── core/
-│   │   └── workflows.py          # Graph Node Wrapper (레거시)
-│   ├── prompts/
-│   │   ├── description.py        # Tool Description
-│   │   ├── system.py             # System Instructions
-│   │   └── assets.py             # (TBD) Optimized Prompts
-│   ├── decision.py               # (TBD) Super-Agent
-│   └── evaluation.py             # (TBD) Portfolio Evaluation
-├── api/                          # 🌐 API 관련
-│   ├── ki/
-│   │   ├── kis_auth.py           # 🔐 KIS 인증
-│   │   ├── kis_domstk.py         # 📊 KIS 주식 API
-│   │   └── sample/               # 📝 KIS API 샘플들
-│   ├── api_client.py             # 🌐 API 클라이언트
-│   ├── portfolio.py              # (TBD) 포트폴리오 관리
-│   └── trader.py                 # (TBD) 거래 실행
-├── ui/                           # 🖥️ 웹 UI 관련
-│   ├── dashboard.py              # 🌐 Streamlit 대시보드
-│   ├── web_components.py         # 🧩 웹 UI 컴포넌트
-│   └── __init__.py               # UI 패키지 초기화
-├── scripts/                      # ⚙️ 스크립트 및 운영 관리
-│   ├── manage.py                 # 🐍 애플리케이션 관리
-│   ├── morning.sh                # 🐚 쉘 관리 스크립트
-│   └── __init__.py               # 스크립트 패키지 초기화
-├── config/                       # ⚙️ 설정 파일
-│   └── setting.py                # 환경변수 기반 설정
-├── utils/                        # 🛠️ 유틸리티
-│   └── logger.py                 # 📝 로깅 시스템
-├── dashboard.py                  # 🚀 대시보드 실행 진입점
-├── manage.py                     # 🚀 관리 스크립트 진입점
-├── morning.sh                    # 🚀 쉘 스크립트 진입점
-├── app.py                        # 🚀 CLI 메인 실행 파일
-├── .env.example                  # 📋 환경변수 템플릿
-├── requirements.txt              # 📦 전체 의존성
-├── requirements_simple.txt       # 📦 핵심 의존성만
-└── README.md                     # 📖 프로젝트 문서
+`.env` 파일을 생성하고 다음 내용을 추가하세요:
+
+```env
+# OpenAI API
+OPENAI_API_KEY=your_openai_api_key
+
+# KIS API
+KIS_APP_KEY=your_kis_app_key
+KIS_APP_SECRET=your_kis_app_secret
+KIS_ACCESS_TOKEN=your_kis_access_token
+
+# Slack Bot
+SLACK_BOT_TOKEN=xoxb-your-slack-bot-token
+SLACK_APP_TOKEN=xapp-your-slack-app-token
+SLACK_SIGNING_SECRET=your-slack-signing-secret
 ```
 
-
-
-
-### 3. 환경 설정
-.env 파일을 생성하고 실제 API 키를 입력합니다.
+### 3. 애플리케이션 실행
 
 ```bash
-# .env 파일 생성
-touch .env
-```
+# 가상환경이 활성화되어 있는지 확인
+which python  # venv/bin/python이 출력되어야 함
 
-.env 파일에서 다음 항목들을 설정하세요:
-```bash
-# OpenAI API 설정
-OPENAI_API_KEY=your_openai_api_key_here
-OPENAI_MODEL=gpt-4o
-OPENAI_TEMPERATURE=0
-
-# KIS API 설정 (한국투자증권)
-KIS_APP_KEY=your_kis_app_key_here
-KIS_APP_SECRET=your_kis_app_secret_here
-KIS_ACCOUNT_NO=your_account_number_here
-KIS_OPTION_ACCOUNT_NO=your_option_account_no_here
-KIS_BASE_URL=https://openapi.koreainvestment.com:9443
-KIS_WS_URL=ws://ops.koreainvestment.com:31000
-
-# MCP 서버 설정 (Exa MCP 통합 기능)
-MCP_EXA_SERVER_URL=https://server.smithery.ai/exa/mcp
-ENABLE_MCP=true
-MCP_TIMEOUT=30
-
-# 로깅 설정
-LOG_LEVEL=INFO
-LOG_FILE=logs/morning.log
-
-# 애플리케이션 설정
-MAX_ITERATIONS=10
-ENABLE_CACHE=true
-```
-
-### 4. 실행
-
-#### 4-1. CLI 실행
-```bash
-# 기본 실행 (삼성전자 분석)
-python app.py
-
-# 다른 종목 분석 (예: SK하이닉스)
-python -c "from agent.analytics import run; run('000660')"
-```
-
-#### 4-2. 웹 대시보드 실행
-
-##### 방법 1: 관리 스크립트 사용 (권장)
-```bash
-# 애플리케이션 시작
-python manage.py start
-# 또는
-./morning.sh start
-
-# 상태 확인
-python manage.py status
-# 또는
-./morning.sh status
-
-# 애플리케이션 중지
-python manage.py stop
-# 또는
-./morning.sh stop
-
-# 재시작
-python manage.py restart
-# 또는
-./morning.sh restart
-
-# 로그 확인
-python manage.py logs
-# 또는
-./morning.sh logs
-```
-
-##### 방법 2: 직접 실행
-```bash
-# Streamlit 대시보드 실행
+# 대시보드 실행
 streamlit run dashboard.py
 
-# 또는 특정 포트로 실행
-streamlit run dashboard.py --server.port 8501
+# Slack Bot 실행
+python slack_bot.py
+
+# 전략 엔진 테스트
+python test/strategy/test_strategy_engine.py
 ```
 
-웹 브라우저에서 `http://localhost:8501`로 접속하여 대시보드를 확인할 수 있습니다.
+## 🏗️ 프로젝트 구조
 
-### 5. 실행 예시
+```
+morning/
+├── agent/                 # AI 에이전트
+│   ├── analytics.py      # 주식 분석 로직
+│   ├── tools.py          # 분석 도구
+│   └── prompts/          # AI 프롬프트
+├── api/                  # API 클라이언트
+│   ├── api_client.py     # 공통 API 클라이언트
+│   ├── ki/              # KIS API
+│   └── trader.py        # 트레이딩 API
+├── strategy/             # 전략 엔진
+│   ├── engines/         # 전략 실행 엔진
+│   ├── strategies/      # 트레이딩 전략
+│   ├── backtest/        # 백테스팅
+│   └── risk_management/ # 리스크 관리
+├── core/                 # 핵심 시스템
+│   ├── dependency_injection.py  # 의존성 주입
+│   ├── error_handling.py        # 에러 처리
+│   └── performance_monitoring.py # 성능 모니터링
+├── test/                 # 테스트
+│   ├── unit/            # 단위 테스트
+│   ├── integration/     # 통합 테스트
+│   └── conftest.py      # 테스트 설정
+├── scripts/             # 유틸리티 스크립트
+├── ui/                  # 사용자 인터페이스
+└── config/              # 설정 파일
+```
+
+## 🧪 테스팅
+
+### 테스트 실행
 
 ```bash
-$ python app.py
+# 가상환경 활성화 확인
+source venv/bin/activate
 
-2025-08-24 11:48:28 - agent.analytics - INFO - Starting analysis for stock: 005930
-2025-08-24 11:48:28 - agent.tools - INFO - Fetching price for stock: 005930
-005930 현재 주가는 : '71,782원' 입니다.
-005930 관련 최신 뉴스: '신제품 출시 발표' 입니다.
-005930 관련 증권사 리포트: 'Hold, 목표가 75,000원' 입니다.
-2025-08-24 11:48:28 - agent.analytics - INFO - Analysis completed for stock: 005930
+# 전체 테스트 실행
+pytest
+
+# 단위 테스트만 실행
+pytest test/unit/
+
+# 통합 테스트만 실행
+pytest test/integration/
+
+# 커버리지 확인
+pytest --cov=. --cov-report=html
 ```
 
-### 6. 폴더 구조 설명
+### 테스트 구조
 
-#### 📁 주요 디렉토리
-- **`agent/`**: AI 에이전트 관련 모듈 (분석, 의사결정, 도구)
-- **`api/`**: 외부 API 연동 모듈 (KIS API, 포트폴리오, 거래)
-- **`ui/`**: 웹 UI 관련 모듈 (Streamlit 대시보드, 컴포넌트)
-- **`scripts/`**: 운영 관리 스크립트 (시작/중지/상태 관리)
-- **`config/`**: 설정 파일 (환경변수, API 키)
-- **`utils/`**: 유틸리티 모듈 (로깅, 헬퍼 함수)
+- **단위 테스트**: 개별 함수/클래스 테스트
+- **통합 테스트**: 모듈 간 상호작용 테스트
+- **성능 테스트**: 성능 지표 측정
+- **E2E 테스트**: 전체 워크플로우 테스트
 
-#### 🚀 진입점 파일
-- **`dashboard.py`**: 웹 대시보드 실행 진입점
-- **`manage.py`**: 애플리케이션 관리 진입점
-- **`morning.sh`**: 쉘 스크립트 진입점
-- **`app.py`**: CLI 실행 진입점
+## 📋 코딩 룰
 
-### 7. 주요 기능 설명
+이 프로젝트는 엄격한 코딩 룰을 따릅니다. 자세한 내용은 [CODING_RULES.md](CODING_RULES.md)를 참조하세요.
 
-#### 🧠 StockAnalyzer 클래스
-- **무한 루프 방지**: 최대 10회 반복으로 안정성 보장
-- **에러 핸들링**: 각 단계별 예외 처리
-- **구조화된 로깅**: 상세한 실행 과정 추적
-- **LLM 폴백**: API 키 없어도 더미 LLM으로 동작
+### 주요 원칙
 
-#### 🛠️ 분석 도구들
-- **fetch_price**: 현재 주식 가격 조회 (랜덤 변동)
-- **fetch_news**: 관련 뉴스 조회 (다양한 뉴스 제공)
-- **fetch_report**: 증권사 리포트 조회 (Buy/Hold/Strong Buy)
+1. **의존성 주입**: 모든 외부 의존성은 DI 컨테이너로 관리
+2. **타입 힌트**: 모든 함수에 타입 힌트 필수
+3. **에러 처리**: 커스텀 예외와 일관된 에러 핸들링
+4. **테스트 커버리지**: 최소 80% 테스트 커버리지 유지
+5. **문서화**: 모든 공개 API에 docstring 필수
 
-#### 🌐 웹 대시보드
-- **실시간 분석**: 주식 코드 입력으로 즉시 분석
-- **인터랙티브 차트**: Plotly 기반 캔들스틱 및 거래량 차트
-- **포트폴리오 관리**: 보유 종목 및 수익률 시각화
-- **분석 기록**: 과거 분석 결과 및 통계
-- **설정 관리**: API 키 및 알림 설정
+## 🔄 개발 워크플로우
 
-#### ⚙️ 운영 관리
-- **자동 프로세스 관리**: 시작/중지/재시작/상태 확인
-- **로그 관리**: 실시간 로그 확인 및 정리
-- **PID 관리**: 프로세스 ID 자동 관리
-- **메모리/CPU 모니터링**: 시스템 리소스 사용량 추적
+### 1. 코드 작성
 
-#### ⚙️ 설정 관리
-- **환경변수**: `.env` 파일로 API 키 관리
-- **로깅**: 파일 로테이션 및 콘솔 출력
-- **의존성**: 핵심 패키지만 사용 가능
+```bash
+# 가상환경 활성화 (매번 확인!)
+source venv/bin/activate
 
-### 7. 향후 개선 계획
-- 🔄 **portfolio.py**: 포트폴리오 관리 기능 구현
-- 💰 **trader.py**: 실제 거래 실행 로직 개발
-- 🎯 **assets.py**: 프롬프트 최적화 및 컨텍스트 관리
-- 🤖 **멀티 에이전트**: 여러 종목 동시 분석
-- 📈 **백테스팅**: 과거 데이터 기반 성능 분석
-- 🔍 **실시간 모니터링**: 웹 대시보드 구축
+# 브랜치 생성
+git checkout -b feature/new-feature
+
+# 코드 작성 후 스테이징
+git add .
+
+# 검증을 포함한 commit
+./scripts/commit_with_validation.sh "feat(api): 새로운 API 추가"
+```
+
+### 2. 자동 검증
+
+Commit 전 자동으로 다음 검증이 실행됩니다:
+
+- ✅ 코드 포맷팅 (black, isort)
+- ✅ 타입 힌트 검사 (mypy)
+- ✅ 보안 검사 (API 키 노출 등)
+- ✅ 테스트 실행 (pytest)
+- ✅ 테스트 커버리지 확인 (80% 이상)
+- ✅ 문서화 검사
+
+### 3. Pull Request
+
+```bash
+# 브랜치 푸시
+git push origin feature/new-feature
+
+# GitHub에서 Pull Request 생성
+# 리뷰어 승인 후 main 브랜치로 머지
+```
+
+## 🛠️ 개발 도구
+
+### 필수 도구
+
+- **Python 3.8+**
+- **Black**: 코드 포맷터
+- **isort**: import 순서 정렬
+- **mypy**: 타입 체커
+- **pytest**: 테스트 프레임워크
+- **pre-commit**: Git hook
+
+### 개발 환경 설정
+
+```bash
+# 가상환경 활성화 (필수!)
+source venv/bin/activate
+
+# 개발 도구 설치
+pip install -r requirements-dev.txt
+
+# pre-commit hook 설정
+pre-commit install
+
+# 코드 포맷팅
+black .
+isort .
+
+# 타입 체크
+mypy .
+
+# 테스트 실행
+pytest
+```
+
+## 📊 성능 모니터링
+
+### 성능 지표
+
+- **API 응답 시간**: 1초 이내
+- **메모리 사용량**: 프로세스당 512MB 이내
+- **CPU 사용률**: 평균 70% 이하
+- **테스트 실행 시간**: 5분 이내
+
+### 모니터링 도구
+
+```python
+from core.performance_monitoring import monitor_performance
+
+@monitor_performance("api_call")
+def get_stock_data(stock_code: str):
+    # API 호출 로직
+    pass
+```
+
+## 🔒 보안
+
+### 보안 정책
+
+1. **민감 정보**: 모든 API 키는 환경변수로 관리
+2. **입력 검증**: 모든 외부 입력에 대한 검증 수행
+3. **SQL Injection 방지**: 파라미터화된 쿼리 사용
+4. **접근 제어**: 적절한 권한 설정
+
+### 보안 검사
+
+```bash
+# 가상환경 활성화 확인
+source venv/bin/activate
+
+# 보안 취약점 검사
+./scripts/pre_commit_check.py
+```
 
 ## 🤝 기여하기
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### 기여 가이드
+
+1. **이슈 생성**: 버그 리포트 또는 기능 요청
+2. **브랜치 생성**: `feature/기능명` 또는 `fix/버그명`
+3. **코드 작성**: 코딩 룰 준수
+4. **테스트 작성**: 새로운 기능에 대한 테스트 추가
+5. **Pull Request**: 상세한 설명과 함께 PR 생성
+
+### 코드 리뷰 체크리스트
+
+- [ ] 코딩 룰 준수
+- [ ] 테스트 커버리지 충족
+- [ ] 성능 영향 검토
+- [ ] 보안 취약점 확인
+- [ ] 문서화 완료
+
+## 📈 로드맵
+
+### v1.1 (예정)
+- [ ] 실시간 알림 시스템
+- [ ] 고급 차트 분석
+- [ ] 포트폴리오 최적화
+
+### v1.2 (예정)
+- [ ] 머신러닝 모델 통합
+- [ ] 다중 거래소 지원
+- [ ] 모바일 앱
+
+## 📞 지원
+
+### 문의 및 지원
+
+- **이슈 리포트**: [GitHub Issues](https://github.com/your-username/morning/issues)
+- **문서**: [Wiki](https://github.com/your-username/morning/wiki)
+- **이메일**: team@morning.com
+
+### 커뮤니티
+
+- **Discord**: [Morning Community](https://discord.gg/morning)
+- **Slack**: [Morning Workspace](https://morning.slack.com)
 
 ## 📄 라이선스
 
-이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 `LICENSE` 파일을 참조하세요.
+이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
-## 📞 문의
+## 🙏 감사의 말
 
-- **프로젝트 링크**: [https://github.com/jacob119/morning](https://github.com/jacob119/morning)
-- **이슈 리포트**: [GitHub Issues](https://github.com/jacob119/morning/issues)
+- **OpenAI**: GPT 모델 제공
+- **KIS**: 한국투자증권 API 제공
+- **Streamlit**: 웹 대시보드 프레임워크
+- **커뮤니티**: 모든 기여자들
+
+## 💡 가상환경 사용 팁
+
+### 일상적인 작업
+
+```bash
+# 프로젝트 시작 시
+cd morning
+source venv/bin/activate
+
+# 작업 완료 후
+deactivate
+```
+
+### 문제 해결
+
+```bash
+# 가상환경 재생성 (문제 발생 시)
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+pip install -r requirements-dev.txt
+```
+
+### 자동 활성화 (선택사항)
+
+```bash
+# .bashrc 또는 .zshrc에 추가
+alias morning='cd /path/to/morning && source venv/bin/activate'
+```
 
 ---
 
-⭐ 이 프로젝트가 도움이 되었다면 스타를 눌러주세요!
+**⚠️ 주의**: 이 시스템은 교육 및 연구 목적으로 제작되었습니다. 실제 투자에 사용하기 전에 충분한 테스트와 검증이 필요합니다.
+
+**🔧 중요**: 항상 가상환경을 사용하세요. 시스템 Python을 직접 사용하면 의존성 충돌이 발생할 수 있습니다.
